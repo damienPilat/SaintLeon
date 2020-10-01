@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
     <!--  Custom CSS  -->
-    <link rel="stylesheet" type="text/css" href="{% static 'manager/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'stLeon/main.css' %}">
 
 
     {% block head_css %}
@@ -23,6 +23,41 @@
 
 </head>
 <body>
+
+    <nav class="navbar navbar-expand-sm justify-content-center">
+        <ul class="nav nav-justified">
+            <li class="nav-item"><a class="navslink" href="#">Paroisse</a></li>
+            <li class="nav-item"><a class="navslink" href="#">Info Pratique</a></li>
+            <li class="nav-item"><a class="navslink" href="#">Vie Spirituel</a></li>
+            <li class="nav-item"><a class="navslink" href="#">Groupes</a></li>
+            <li class="nav-item"><a class="navslink" href="#">Prier</a></li>
+            <li class="nav-item"><a class="navslink" href="#">Horaires</a></li>
+        </ul>
+        <form class="form-inline my-3 my-lg-0">
+            <div class="search-box">
+                <input type="search" class="form-control search-txt" placeholder="Rechercher" aria-label="Search">
+                <a class="search-btn" href="#">
+                    <i class="fas fa-search"></i>
+                </a>
+            </div>
+        </form>
+    </nav>
+
+{#  Main Content  #}
+    <div class="container">
+        {#  Picture Header  #}
+        <div class="row">
+            <div class="col pictures">Picture 1</div>
+            <div class="col pictures">Picture 2</div>
+            <div class="col pictures">
+                <div class="row pictures">Picture 3a</div>
+                <div class="row pictures">Pictrue 3b</div>
+            </div>
+        </div>
+
+{#  Paroisse  #}
+    </div>
+
 
 
 

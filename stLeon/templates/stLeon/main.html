@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en-gb">
+<head>
+    <title>{% block title %}Side-Main Nav{% endblock title %}</title>
+
+    {% load static %} {# Allow access to Static files #}
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'stLeon/05_main.css' %}">
+
+    <!-- Logo Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+
+    {% block head_css %}
+        {#  Page-based CSS files #}
+    {% endblock head_css %}
+
+    {% block scriptFiles %}
+        {#  Page-based JS Files  #}
+    {% endblock scriptFiles %}
+
+</head>
+<body>
+
+<!-- MAIN NAV -->
+<nav class="main-navbar center-h" id="main-nav-bar">
+    <a href="la_paroisse" class="main-nav-item">La Paroisse</a>
+    <a href="info_pratique" class="main-nav-item">Info Pratique</a>
+    <a href="vie_spirituel" class="main-nav-item">Vie Spirituel</a>
+    <a href="groups" class="main-nav-item">Groups</a>
+    <a href="prier" class="main-nav-item">Prier</a>
+    <div class="search-box"></div>
+</nav>
+
+<!-- SIDE NAV -->
+<div id="sideNav" class="side-nav">
+    <a href="javascript:void(0)" class="close-btn" onclick="closeNav()">&#215;</a>
+    <a href="la_paroisse" class="side-nav-item">La Paroisse</a>
+    <a href="info_pratique" class="side-nav-item">Info Pratique</a>
+    <a href="vie_spirituel" class="side-nav-item">Vie Spirituel</a>
+    <a href="groups" class="side-nav-item">Groups</a>
+    <a href="prier" class="side-nav-item">Prier</a>
+    <!-- <div class="search-box"></div> -->
+</div>
+
+
+<!-- MAIN PAGE CONTENTS -->
+<div id="main">
+    <!-- SIDE NAV: Btn -->
+    <span id="side-menu-open" onclick="openNav()">&#9776;</span>
+
+    <div class="image-wrapper banner-img-size">
+        <div id="photo_one" class="image-wrapper-items">
+            <img src="{% static 'stLeon/images/stLeon_interieur.jpeg' %}" alt="St Leon - Interieur" />
+        </div>
+        <div id="photo_two" class="image-wrapper-items"><img src="{% static 'stLeon/images/stLeon_exterieur_portrait_one.JPG' %}" /></div>
+        <div id="photo_three" class="image-wrapper-items"><img src="{% static 'stLeon/images/stLeon_exteireur_portrait_two.jpeg' %}" /></div>
+    </div>
+
+    <div id="logo">
+        <span id="logo-txt">Paroisse Saint-L&eacute;on<span id="logo-txt-two">Paris 15eme</span></span>
+        <hr id="logo-line"/>
+    </div>
+
+    <div id="bienvenue" class="center-all">
+        <div id="bienvenue-txt">
+            <!-- Bienvenue Title -->
+            <div id="bien-title">
+                <span id="intro-msg">Bienvenue &agrave; <br> Saint-L&eacute;on<br><span id="intro-msg-two">Paris 15eme</span></span>
+            </div>
+            <!-- Paragraph & Image One -->
+            <div id="bien-p1">
+                <p>L’église Saint Léon et le bâtiment de la Maison des œuvres se dressent au cœur de ce quartier, comme le signe de la présence de Dieu au milieu des hommes.</p>
+            </div>
+            <div id="bien-img1" class="center-all bien-img-size">
+                <img src="{% static 'stLeon/images/bienvenu_img1.png' %}" />
+            </div>
+            <!-- Paragraph & Image Two -->
+            <div id="bien-p2" >
+                <p>Notre église n’est pas qu’un édifice architectural même si vous pouvez apprécier son style “art-déco” typique des années 30. Elle est surtout le lieu où se où se rassemble tout au long de l’année, au rythme de la célébration des sacrements et des fêtes liturgiques, une communauté catholique nombreuse, joyeuse et dynamique.</p>
+            </div>
+            <div id="bien-img2" class="center-all bien-img-size">
+                <img src="{% static 'stLeon/images/bienvenu_img2.png' %}" />
+            </div>
+            <!-- Paragraph & Image Three -->
+            <div id="bien-p3">
+                <p>Dimanche après dimanche, des milliers d’habitants de ce quartier se retrouvent autour de l’autel pour recevoir du Christ, la Vie et l’Amour.</p>
+            </div>
+            <div id="bien-img3" class="center-all bien-img-size">
+                <img src="{% static 'stLeon/images/bienvenu_img3.png' %}" />
+            </div>
+        </div>
+    </div><!-- END: bienvenu -->
+
+    <div id="horaires-info">
+        <div id="horaires" class="center-all">
+            <img src="{% static 'stLeon/images/horaires_messe_HorsVacances.png' %}" width="90%">
+        </div>
+
+        <div id="info" class="center-all">
+            <div class="info-slot-container">
+                <img class="info-img" src="{% static 'stLeon/images/prayer_icon.png' %}"/>
+                <div class="info-slot">
+                    <a href="#" class="info-link">
+                        <span class="info-slot-title">Prieres de Saint Bernard en ces Temps Perturbes</span><br>
+                        <span class="info-slot-txt">Souvenez vous &ocirc; tr&egrave;s mis&eacute;ricordieuse Virege Marie, qu'on n'a jamais entendu dire (&hellip;)</span>
+                    </a>
+                </div>
+            </div>
+            <div class="info-slot-container">
+                <img class="info-img" src="{% static 'stLeon/images/bible_icon.png' %}"/>
+                <div class="info-slot">
+                    <a href="#" class="info-link">
+                        <span class="info-slot-title">Avec Theobule, les Enfants connecte &agrave; la parole de Dieu</span><br>
+                        <span class="info-slot-txt">J&eacute;sus aime nous parler du Royaume de son P&egrave;re et il nous invite &agrave; y entrer. Il nous dit comment (&hellip;)</span>
+                    </a>
+                </div>
+            </div>
+            <div class="info-slot-container">
+                <img class="info-img" src="{% static 'stLeon/images/podcast_icon.png' %}"/>
+                <div class="info-slot">
+                    <a href="#" class="info-link">
+                        <span class="info-slot-title">Ecoutez la Conf&eacute;rence « Sainte Genevi&egrave;ve » faite à Saint-L&eacute;on</span><br>
+                        <span class="info-slot-txt">&laquo; <span class="underline">lien à la conf&eacute;rence</span> &raquo;</span>
+                    </a>
+                </div>
+            </div>
+        </div><!-- END: info -->
+    </div><!-- END: horaires-ingo -->
+
+    <!-- ACCORDION: EVENTS -->
+    <div class="accordion-container">
+        <button class="accordion" id="accordion-first">Congrès mission à Paris 25-27 septembre 2020, c’est pou vous</button>
+        <div class="panel">
+            <p>Depuis 2015, Anuncio organise le Congrès Mission en partenariat avec d’autres oeuvres et mouvements missionnaires.<br>Le Congrès Mission rassemble de nombreuses branches de l’Église autour de la question toujours nouvelle : Comment proposer la foi dans la société actuelle ?</p>
+        </div>
+
+        <button class="accordion">DIMANCHE 27 SEPTEMBRE, VENTE DE PETITS POTS DE CREME AU CITRON</button>
+        <div class="panel">
+            <p>Crème au citron<br>Soeur Raphaël se tiendra à votre disposition ce dimanche de 10h à 12h30 et de 17h à 20h15 pour vous proposer ses petits pots de crème au citron.</p>
+        </div>
+
+        <button class="accordion" id="accordion-last">MERCREDI 30 SEPTEMBRE : Réfléchir sur ce que nous vivons</button>
+        <div class="panel">
+            <p>Le Père Schwab propose chaque mercredi pendant 4 semaines, à 20h30 salle Saint-Augustin, de relire ensemble les mois écoulés en s’appuyant sur la lettre de Mgr de Moulins-Beaufort « Le matin, sème ton grain » pour mieux se tourner vers l’avenir. Chaque mercredi s’appuiera sur un chapitre de la Lettre. La Lettre est disponible sur place pour ceux qui ne l’ont pas déjà achetée.</p>
+        </div>
+    </div><!--  END: accordion -->
+
+    <!-- CALENDAR -->
+    <div class="calendar-container center-all">
+        <img src="{% static 'stLeon/images/calendar.png' %}" id="calendar-img">
+        <div class="calendar center-all"></div>
+
+    </div><!-- END: calander -->
+
+    <div class="exterior-links-container">
+        <div class="exterior-links-images">
+            <a href="#"><img class="link-img" src="{% static 'stLeon/images/stLeon_jeune_logo.png' %}">
+            </a>
+            <a href="#"><img class="link-img" src="{% static 'stLeon/images/charisme_two.png' %}"></a>
+            <a href="#"><img class="link-img" src="{% static 'stLeon/images/catho_diocese_logo.png' %}"></a>
+            <a href="#"><img class="link-img" src="{% static 'stLeon/images/aleteia_logo.png' %}"></a>
+        </div>
+        <div class="exterior-links-text">
+            <a href="#" class="link-text">Jeunes de Saint-Léon</a>
+            <a href="#" class="link-text">Charismes de Saint-Léon</a>
+            <a href="#" class="link-text">Diocese de Paris</a>
+            <a href="#" class="link-text">Aleteia<br>La foi Catholique</a>
+        </div>
+    </div><!-- END: Exterior Links -->
+
+
+    <!-- SOCIAL LINKS -->
+    <div class="social-links">
+        <a href="#"></a><!-- Spacing -->
+        <a href=""><img class="s-link-img" src="{% static 'stLeon/images/sn_papeFrancois.png' %}" /></a>
+        <a href=""><img class="s-link-img" src="{% static 'stLeon/images/sn_paroisseSaintLeon.png' %}" /></a>
+        <a href=""><img class="s-link-img" src="{% static 'stLeon/images/sn_radioNotreDame.png' %}" /></a>
+        <a href="#"></a>
+    </div><!-- END: Social Links -->
+
+</div><!-- END: main -->
+
+<div id="footer">
+    <div id="footer-table">
+        <ul id="footer-links-list">
+            <li><a href="#" class="footer-link">Accesibilté</a></li>
+            <li><a href="#" class="footer-link">Mentions Legales</a></li>
+            <li><a href="#" class="footer-link">Plan du Site</a></li>
+            <li><a href="#" class="footer-link">Espace Privé</a></li>
+            <li><a href="#" class="footer-link">Fil RSS du Site</a></li>
+        </ul>
+    </div>
+
+    <p id="footer-text">Paroisse Saint-L&eacute;on &agrave; Paris - 2020</p>
+
+</div>
+
+
+
+
+
+<!-- SIDE NAV -->
+
+<script type="text/javascript">
+
+
+    // Open Side Nav
+    function openNav() {
+        document.getElementById('sideNav').style.width = "250px";
+        document.getElementById("main").style.marginLeft = "250px";
+        document.body.style.backgroundColor = "rgba(93,29,20,0.8)";
+        detectClose(); // Allow usr to click on main screen area to close menu
+    }
+
+    // Close Side Nav
+    function closeNav() {
+        document.getElementById('sideNav').style.width = "0";
+        document.getElementById("main").style.marginLeft = "0";
+        document.body.style.backgroundColor = "#EC4B33";
+    }
+
+    // Close sideNav w/ click on main
+    function detectClose() {
+        // Wait 0.4s before activating listner
+        setTimeout(function() {
+            window.addEventListener('click', function(e) {
+                if (document.getElementById('main').contains(e.target)) {
+                    closeNav();
+                }
+            }, 400); // 400milsecond delay (transition period)
+        }) // END: setTimeout
+    } // END: detectClose
+</script>
+
+
+<!-- SEARCH BOX -->
+
+<script type="text/javascript">
+    // Get All searchbox instances
+    var searchBox = document.getElementsByClassName("search-box");
+
+    // Create Input element w/ attributes
+    var search_input = document.createElement("input");
+    Object.assign(search_input, {
+        className: 'search-txt',
+        type: 'text',
+        placeholder: 'Rechercher'
+    });
+
+    // Create link tag w/ attributes
+    var search_link = document.createElement("a");
+    Object.assign(search_link, {
+        className: 'search-btn center-all',
+        href: '#'
+    });
+    // Create & Append image to link tag
+    var search_img = document.createElement("img");
+    Object.assign(search_img, {
+        src: "{%  static 'stLeon/images/search.svg' %}",
+        id: 'search-icon'
+    });
+    search_link.appendChild(search_img);
+
+
+    // Append elements to search boxes
+    for(i=0; i<searchBox.length;i++) {
+        searchBox[i].appendChild(search_input);
+        searchBox[i].appendChild(search_link);
+    }
+</script>
+
+<!-- ACCORDION -->
+
+<script type="text/javascript">
+    var acc = document.getElementsByClassName("accordion");
+    var i;
+
+    for (i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function() {
+            this.classList.toggle("active");	// Toggle active
+
+            var panel = this.nextElementSibling;
+            if (panel.style.maxHeight) {
+                panel.style.maxHeight = null;
+            } else {
+                panel.style.maxHeight = panel.scrollHeight + "px";
+            }
+        });
+    }
+</script>
+
+</body>
+</html>

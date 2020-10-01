@@ -1,0 +1,600 @@
+body {
+    background: white;
+
+    /* Align all content fully to edges of window*/
+    margin: 0;
+    padding: 0;
+    top: 0;
+    left: 0;
+}
+
+/*********
+SEARCH BOX:
+- Search div,
+	- Search button,
+		- Search Icon,
+	- Search text,
+**********/
+
+div.search-box {
+    /* Dimension */
+    width: 40px;
+    height: 40px;
+
+    /* Position */
+    top: 5%;
+    right: 5%;
+
+    /* Style */
+    background: rgb(48, 54, 63);
+    border-radius: 40px; 			/* Round corners to make circle [50% has same effect] */
+
+    /* Animaton */
+    transition: width 0.4s;
+}
+
+a.search-btn {
+    /* Dimensions */
+    width: 40px;
+    height: 40px;
+    background: rgb(48, 54, 63);
+    border-radius: 50%;
+
+    /* Layout */
+    float: right;		/* Stays on right when expanded */
+
+    /* Animation */
+    transition: background 0.4s;
+}
+/* Define size and colour of svg Image */
+img#search-icon {
+    width: 18px;
+    height: 18px;
+    /* Change svg color to bkg using tool: https://codepen.io/sosuke/pen/Pjoqqp*/
+    filter: invert(30%) sepia(23%) saturate(5793%) hue-rotate(346deg) brightness(112%) contrast(85%)
+}
+
+input.search-txt {
+    /* Initially make invisible */
+    border: none;
+    background: none;
+    outline: none;
+    width: 0px;
+
+    /* Layout */
+    float: left;	/* Align left when expanded */
+    padding: 0;
+
+    /* Style */
+    color: white;
+    font-size: 16px;
+    line-height: 40px;
+
+    /* Animation */
+    transition: 0.4s;
+}
+
+/* ANIMATION: */
+/* Change search-box width on hover*/
+div.search-box:hover {
+    width: 220px;
+}
+/* Change search-txt width on search-box hover */
+div.search-box:hover > .search-txt {
+    width: 150px;
+    padding-left: 25px;
+}
+/* Change search-btn color on search-box hover */
+div.search-box:hover > .search-btn {
+    background: white;
+}
+
+/************
+MAIN MENU BAR
+*************/
+/* Div */
+nav.main-navbar {
+    /* Layout */
+    top: 5%;
+    padding: 10px;
+    background: #EC4B33;
+}
+
+/* Nav items */
+a.main-nav-item {
+    /* Style */
+    color: rgb(48, 54, 63);
+    text-decoration: none;
+    font-size: 20px;
+    padding: 10px 20px 10px 20px;
+}
+
+/*******
+SIDE NAV
+********/
+/* Div */
+div.side-nav {
+    /* Dimensions */
+    height: 100%;	/* Full height of page */
+    width: 0;		/* Initially hidden */
+
+    /* Layout */
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+
+    /* Style */
+    background-color: rgb(48, 54, 63);
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 50px;
+}
+/* Links */
+div.side-nav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+/* Links:hover */
+div.side-nav a:hover {
+    color: #f1f1f1;
+}
+/* Close Button */
+div.side-nav .close-btn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+/* side-nav btn*/
+#side-menu-open {
+    font-size: 30pt;
+    cursor: pointer;
+    background: #EC4B33;
+}
+
+
+/***********
+GRID: Images
+************/
+.image-wrapper {
+    /* Grid */
+    background: #EC4B33;
+    display: grid;
+    grid-template-columns: 44% 22% 33%;
+    grid-gap: 10px;
+
+    /* Dimensions */
+    height: 100%;
+    padding: 10px;
+}
+
+.image-wrapper-items {
+    /* Dimensions */
+    height: 100px;
+    height: 300px;
+
+    /* Horizontal Alignment */
+    display: flex;
+    justify-content: center;
+}
+
+.banner-img-size > div > img {
+    height: 300px;
+}
+
+/***
+LOGO
+****/
+div#logo {
+    background: #EC4B33;
+}
+span#logo-txt {
+    /* Style */
+    color: white;
+    font-size: 65px;
+    font-family: 'Montserrat', sans-serif;
+
+    /* Layout */
+    padding-left: 8%;
+}
+
+span#logo-txt-two {
+    /* Style */
+    font-size: 20px;
+    padding-left: 20px;
+
+    /* Layout */
+    position: relative;
+    top: -2px; 			/* Move txt up */
+}
+
+/* Logo Line */
+hr#logo-line {
+    /* Dimensions */
+    height: 30px;
+    width: 100vw;
+    margin: -18px 0 0 0;  /* Remove space b/w elements */
+
+    /* Style */
+    background: white;
+    color: white;
+    border: none;
+}
+
+/********
+BIENVENUE
+*********/
+div#bienvenue {
+    /* Dimensons */
+    height: 800px;
+
+    /* Style */
+    background: rgb(242, 242, 242);
+}
+
+div#bienvenue-txt {
+    /* Dimensions */
+    height: 650px;
+    width: 600px;
+
+    /* Style */
+    border-radius: 5pt;
+    background-color: white;
+
+    /* Shadow: https://www.cssmatic.com/box-shadow */
+    -webkit-box-shadow: 0px 0px 13px 2px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 13px 2px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 13px 2px rgba(0,0,0,0.75);
+
+    /* Grid Layout */
+    display: grid;
+    grid-template-columns: repeat(3, 33%);
+    grid-template-rows: auto;
+    grid-template-areas:
+            "title title title"
+            "textOne textOne imgOne"
+            "imgTwo textTwo textTwo"
+            "textThree textThree imgThree";
+}
+
+.bien-img-size > img {
+    width: 110px;
+}
+
+/* Pass to all children */
+div#bienvenue-txt > div {
+    padding: 25px;
+    font-size: 16px;
+}
+/* Define elements on grid area */
+div#bien-title {
+    grid-area: title;
+}
+span#intro-msg {
+    font-size: 30px;
+}
+span#intro-msg-two {
+    font-size: 14px;
+    position: relative;
+    top: -10px;
+}
+
+div#bien-p1 {
+    grid-area: textOne;
+}
+div#bien-img1 {
+    grid-area: imgOne;
+}
+
+div#bien-p2 {
+    grid-area: textTwo;
+}
+div#bien-p2 > p {
+    text-align: right;
+}
+div#bien-img2 {
+    grid-area: imgTwo;
+}
+div#bien-p3 {
+    grid-area: textThree;
+}
+div#bien-img3 {
+    grid-area: imgThree;
+    padding: 15pt 5pt 15pt 5pt !important;
+}
+
+/************
+Horaires Info
+*************/
+div#horaires-info {
+    /* Dimensions */
+    height: 400px;
+
+    /* Style */
+    background-color: rgb(254, 241, 231);
+
+    /* Grid */
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+}
+div#horaires {
+    margin: 10px;
+}
+div#info {
+    /* Change to grid */
+    display: grid;
+    grid-template-columns: 1fr;
+
+    /* Style */
+    margin: 10px;
+}
+div.info-slot-container {
+    /* Layout */
+    display: grid;
+    grid-template-columns: 20% 80%;
+
+    justify-content: center;
+}
+img.info-img {
+    /* Dimensions */
+    width: 90%;
+    min-width: 50px;
+    max-width: 50px;
+    height: auto;
+
+    place-self: center;
+}
+div.info-slot {
+    /* Dimension */
+    width: 80%;
+    padding-left: 10px;
+
+    /* Style */
+    border-left: 3px solid rgb(62, 69, 76);
+}
+a.info-link {
+    text-decoration: none;
+    color: black;
+}
+span.info-slot-title {
+    font-size: 20px;
+}
+
+/********
+ACCORDION
+*********/
+div.accordion-container {
+    padding: 5% 0;
+    background-color: rgb(200, 201, 218);
+    background-clip: border-box;
+}
+button.accordion {
+    /* Align center*/
+    display: block;
+    margin: 0 auto 0 auto;
+
+    /* Dimension */
+    width: 80%;
+
+    /* Style */
+    background-color: #eee;
+    color: #444;
+    outline: none;
+    padding: 18px;
+    border: none;
+    text-align: left;
+
+    cursor: pointer;
+
+    /* Animation */
+    transition: 0.4s;
+
+}
+
+.active, button.accordion:hover {
+    background-color: #ccc;
+    border-bottom: 1px solid black;
+}
+
+.accordion:after {
+    /* Style */
+    font-size: 13px;
+    color: #777;
+    float: right;
+    margin-left: 5px;
+
+    content: '\002B';
+
+}
+
+.active:after {
+    content: "\2212";
+}
+
+button#accordion-first {
+    border-radius: 5px / 5px 5px 0 0;
+}
+button#accordion-last {
+    border-radius: 5px / 0 0 5px 5px;
+}
+
+div.panel {
+    display: block;
+    margin: 0 auto;
+    width: 80%;
+    /*padding: 0 18px;*/
+    background-color: white;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+}
+
+/*******
+CALANDER
+********/
+div.calendar-container {
+    /* Dimensions */
+    height: 500px;
+
+    /* Style */
+    /*background-color: rgb(242, 199, 127);*/
+    background-clip: border-box;
+}
+
+div.calendar {
+    /* Dimensions */
+    height: 300px;
+    width: 75%;
+    border-radius: 10px;
+
+    /* Style */
+    background-color: white;
+
+    display: none;	/* !HIDDEN! */
+}
+img#calendar-img {
+    width: 100%;
+}
+
+/*************
+EXTERIOR LINKS
+**************/
+div.exterior-links-container {
+    /* Grid */
+    display: grid;
+    grid-template-rows: 2;
+
+    /* Style */
+    background-color: rgb(229, 239, 219);
+    background-clip: border-box;
+}
+
+div.exterior-links-container > div {
+    /* Grid */
+    display: grid;
+    grid-template-columns: repeat(4, 25%);
+    place-items: center;
+
+    /* Style */
+    text-align: center;
+}
+
+div.exterior-links-images {
+    margin-top: 5%;
+}
+img.link-img {
+    max-width: 20vw;
+    height: auto;
+    max-height: 20vw;
+}
+a.link-text {
+    text-decoration: none;
+    color: black;
+    padding-bottom: 10%;
+}
+
+
+/***********
+SOCIAL LINKS
+************/
+div.social-links {
+    display: grid;
+    grid-template-columns: repeat(5, 20%);
+    place-items: center;
+    padding: 2% 0;
+
+    background-color: rgb(248, 230, 216);
+    background-clip: border-box;
+}
+img.s-link-img {
+    max-width: 15vw;
+    height: auto;
+    max-height: 15vh;
+}
+
+
+/* FOOTER */
+div#footer {
+    /* Dimensions */
+    width: 100vw;
+
+    /* Style */
+    background-color: rgb(248, 230, 216);
+    background-clip: border-box;
+    border-top: 3px solid orange;
+}
+
+div#footer-table {
+    display: table;
+    margin: 0 auto;
+}
+
+ul#footer-links-list {
+    list-style: none;
+}
+ul#footer-links-list li {
+    display: inline;
+    padding: 5px;
+}
+a.footer-link {
+    text-decoration: none;
+    color: black;
+}
+a.footer-link:hover {
+    color: gray;
+}
+p#footer-text {
+    margin: 0;
+    padding-bottom: 2%;
+    text-align: center;
+    color: gray;
+}
+
+/**************
+SCREEN SETTINGS
+***************/
+/* LARGE SCREEN*/
+@media screen and (min-width: 900px) {
+    /* MAIN NAV: SHOW */
+    /* SIDE NAV: Hidden; */
+    #side-menu-open {display: none;}
+
+}
+/* MEDIUM SCREENS */
+@media screen and (min-width: 600px) and (max-width: 900px) {
+    /* Remove navbar*/
+    nav#main-nav-bar {display: none;}
+}
+
+/* SMALL SCREEN */
+@media screen and (max-width: 600px) {
+    /* Remove navbar*/
+    nav#main-nav-bar {display: none;}
+}
+
+/*************
+HELPER CLASSES
+**************/
+/* Center Vertically & Horizontally*/
+.center-all {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Horizontal Center */
+.center-h {
+    display: flex;
+    justify-content: center;
+}
+
+.underline {
+    text-decoration: underline;
+}

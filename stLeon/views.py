@@ -3,5 +3,5 @@ from django.http import Http404
 
 
 def index(request):
-    return render(request, 'stLeon/index.html')
+    return render(request, 'stLeon/main.html')
 
