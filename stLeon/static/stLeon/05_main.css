@@ -248,9 +248,9 @@ div#bienvenue-txt {
     background-color: white;
 
     /* Shadow: https://www.cssmatic.com/box-shadow */
-    -webkit-box-shadow: 0px 0px 13px 2px rgba(0,0,0,0.75);
-    -moz-box-shadow: 0px 0px 13px 2px rgba(0,0,0,0.75);
-    box-shadow: 0px 0px 13px 2px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 0 0 13px 2px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0 0 13px 2px rgba(0,0,0,0.75);
+    box-shadow: 0 0 13px 2px rgba(0,0,0,0.75);
 
     /* Grid Layout */
     display: grid;
@@ -326,6 +326,8 @@ div#horaires-info {
 }
 div#horaires {
     margin: 10px;
+    width: 45vw;
+
 }
 div#info {
     /* Change to grid */
@@ -334,6 +336,7 @@ div#info {
 
     /* Style */
     margin: 10px;
+    /*width: 45vw;*/
 }
 div.info-slot-container {
     /* Layout */
@@ -363,77 +366,94 @@ a.info-link {
     text-decoration: none;
     color: black;
 }
-span.info-slot-title {
+p.info-slot-title {
     font-size: 20px;
+    margin: 5px 0;
+}
+p.info-slot-txt {
+    /* Dimensions */
+    width: 30%;
+    margin: 0;
+
+    /* Cut on overflow */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;  /* IE 6+, FF 7+, Op 11+, Saf 1.3+, Chr 1+ */
+    -o-text-overflow: ellipsis;  /* for Opera 9 & 10 */
 }
 
 /********
 ACCORDION
 *********/
 div.accordion-container {
+    /* Dimensions */
     padding: 5% 0;
-    background-color: rgb(200, 201, 218);
-    background-clip: border-box;
-}
-button.accordion {
-    /* Align center*/
-    display: block;
-    margin: 0 auto 0 auto;
-
-    /* Dimension */
-    width: 80%;
+    height: 100%;
 
     /* Style */
-    background-color: #eee;
+    background-color: rgb(203, 213, 222);
+    background-clip: border-box;    /* Background color extends behind border */
+}
+div.accordion-element {
+    /* Dimensions */
+    width: 80%;
+
+    /* Center elements*/
+    display: block;
+    margin: 0 auto 0 auto;
+}
+
+button.accordion {
+    /* Dimension */
+    width: 100%;
+
+    /* Style */
+    background-color: white;
     color: #444;
     outline: none;
     padding: 18px;
     border: none;
     text-align: left;
 
+    /* Other */
     cursor: pointer;
-
-    /* Animation */
-    transition: 0.4s;
-
+    transition: 0.4s; /* Bg color change on hover */
 }
-
 .active, button.accordion:hover {
-    background-color: #ccc;
+    /* Style */
+    background-color: rgb(255, 255, 255);
     border-bottom: 1px solid black;
 }
-
 .accordion:after {
     /* Style */
-    font-size: 13px;
+    font-size: 17px;
     color: #777;
     float: right;
     margin-left: 5px;
 
-    content: '\002B';
-
+    content: '\002B';   /* Plus icon */
 }
-
 .active:after {
-    content: "\2212";
+    content: "\2212";   /* Negative icon */
 }
-
 button#accordion-first {
-    border-radius: 5px / 5px 5px 0 0;
+    border-radius: 5px / 5px 5px 0 0;   /* Edge corners rounded */
 }
 button#accordion-last {
     border-radius: 5px / 0 0 5px 5px;
 }
-
 div.panel {
     display: block;
     margin: 0 auto;
-    width: 80%;
+    /*width: 80%;*/
     /*padding: 0 18px;*/
-    background-color: white;
+    background-color: rgb(237, 242, 246);
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.2s ease-out;
+}
+p.panel-text {
+    margin: 1em;
 }
 
 /*******
@@ -597,4 +617,14 @@ HELPER CLASSES
 
 .underline {
     text-decoration: underline;
+}
+.link {
+    color: rgb(0, 180, 216);
+    text-decoration: none;
+    font-style: italic;
+}
+.mail {
+    color: rgb(251, 133, 0);
+    text-decoration: none;
+    font-style: italic;
 }
