@@ -231,50 +231,49 @@ hr#logo-line {
 BIENVENUE
 *********/
 div#bienvenue {
-    /* Dimensons */
-    height: 800px;
+    /* Dimension */
+    padding: 25px 0;
 
     /* Style */
     background: rgb(242, 242, 242);
-}
+    background-clip: border-box;
 
-div#bienvenue-txt {
+    /* Center */
+    display: flex;
+    justify-content: center;
+}
+div#bienvenue-container {
     /* Dimensions */
-    height: 650px;
-    width: 600px;
+    width: 75vw;
+    max-width: 650px;
+    min-width: 420px;
+    margin: 10px;
+    padding: 5px;
 
     /* Style */
-    border-radius: 5pt;
-    background-color: white;
+    background: white;
+    border-radius: 5px;
 
     /* Shadow: https://www.cssmatic.com/box-shadow */
     -webkit-box-shadow: 0 0 13px 2px rgba(0,0,0,0.75);
     -moz-box-shadow: 0 0 13px 2px rgba(0,0,0,0.75);
     box-shadow: 0 0 13px 2px rgba(0,0,0,0.75);
-
-    /* Grid Layout */
-    display: grid;
-    grid-template-columns: repeat(3, 33%);
-    grid-template-rows: auto;
-    grid-template-areas:
-            "title title title"
-            "textOne textOne imgOne"
-            "imgTwo textTwo textTwo"
-            "textThree textThree imgThree";
+}
+div.bienvenue-elements {
+    display: flex;
+    padding-right: 20px;
+    padding-left: 0;
+}
+/* Reverse row direction on even */
+div.bienvenue-elements:nth-child(odd) {
+    flex-direction: row-reverse;
+    text-align: right;
+    padding-right: 0;
+    padding-left: 20px;
 }
 
-.bien-img-size > img {
-    width: 110px;
-}
-
-/* Pass to all children */
-div#bienvenue-txt > div {
-    padding: 25px;
-    font-size: 16px;
-}
-/* Define elements on grid area */
-div#bien-title {
-    grid-area: title;
+div#bienvenue-titre {
+    padding: 30px;
 }
 span#intro-msg {
     font-size: 30px;
@@ -284,29 +283,14 @@ span#intro-msg-two {
     position: relative;
     top: -10px;
 }
-
-div#bien-p1 {
-    grid-area: textOne;
+p.bienvenue-text {
+    padding: 30px;
+    font-size: 16px;
 }
-div#bien-img1 {
-    grid-area: imgOne;
-}
-
-div#bien-p2 {
-    grid-area: textTwo;
-}
-div#bien-p2 > p {
-    text-align: right;
-}
-div#bien-img2 {
-    grid-area: imgTwo;
-}
-div#bien-p3 {
-    grid-area: textThree;
-}
-div#bien-img3 {
-    grid-area: imgThree;
-    padding: 15pt 5pt 15pt 5pt !important;
+img.bienvenue-img {
+    width: 110px;
+    height: auto;
+    padding: 30px;
 }
 
 /************
