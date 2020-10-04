@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-gb">
 <head>
-    <title>{% block title %}Side-Main Nav{% endblock title %}</title>
+    <title>{% block title %}Paroisse Saint-Leon{% endblock title %}</title>
 
     {% load static %} {# Allow access to Static files #}
 
@@ -62,89 +62,68 @@
             <hr id="logo-line"/>
         </div>
 
-        <div id="bienvenue" class="center-all">
-            <div id="bienvenue-txt">
-                <!-- Bienvenue Title -->
-                <div id="bien-title">
+        <!--  Bienvenue Msg -->
+        <div id="bienvenue">
+            {%  load stLeon_extras %}
+            <div id="bienvenue-container">
+                <div id="bienvenue-titre">
                     <span id="intro-msg">Bienvenue &agrave; <br> Saint-L&eacute;on<br><span id="intro-msg-two">Paris 15eme</span></span>
                 </div>
-                <!-- Paragraph & Image One -->
-                <div id="bien-p1">
-                    <p>L’église Saint Léon et le bâtiment de la Maison des œuvres se dressent au cœur de ce quartier, comme le signe de la présence de Dieu au milieu des hommes.</p>
-                </div>
-                <div id="bien-img1" class="center-all bien-img-size">
-                    <img src="{% static 'stLeon/images/bienvenu_img1.png' %}" />
-                </div>
-                <!-- Paragraph & Image Two -->
-                <div id="bien-p2" >
-                    <p>Notre église n’est pas qu’un édifice architectural même si vous pouvez apprécier son style “art-déco” typique des années 30. Elle est surtout le lieu où se où se rassemble tout au long de l’année, au rythme de la célébration des sacrements et des fêtes liturgiques, une communauté catholique nombreuse, joyeuse et dynamique.</p>
-                </div>
-                <div id="bien-img2" class="center-all bien-img-size">
-                    <img src="{% static 'stLeon/images/bienvenu_img2.png' %}" />
-                </div>
-                <!-- Paragraph & Image Three -->
-                <div id="bien-p3">
-                    <p>Dimanche apr&egrave;s dimanche, des milliers d’habitants de ce quartier se retrouvent autour de l’autel pour recevoir du Christ, la Vie et l’Amour.</p>
-                </div>
-                <div id="bien-img3" class="center-all bien-img-size">
-                    <img src="{% static 'stLeon/images/bienvenu_img3.png' %}" />
-                </div>
-            </div>
-        </div><!-- END: bienvenu -->
 
+                {% for bEl in bienvenue %}
+                    <div class="bienvenue-elements">
+                        <p class="bienvenue-text">{{ bEl.text|safe }}</p>
+                        {% with 'stLeon/images/Bienvenue/bienvenue_img'|addstr:forloop.counter|addstr:'.png' as image_static %}
+                            <img class="bienvenue-img" src="{% static image_static %}" alt="">
+                        {% endwith %}
+                    </div>
+                {%  endfor %}
+            </div>
+        </div><!-- END: bienvenue -->
+
+        <!-- Horaires & A Noter -->
         <div id="horaires-info">
+            <!-- Horaires -->
             <div id="horaires" class="center-all">
                 <img src="{% static 'stLeon/images/horaires_messe_HorsVacances.png' %}" width="90%">
-            </div>
+            </div><!-- END: Horaires -->
 
+            <!-- A Noter: -->
+            {# Three latest elements from Models.Anoter, w/ image, title, text & link #}
             <div id="info" class="center-all">
-                <div class="info-slot-container">
-                    <img class="info-img" src="{% static 'stLeon/images/prayer_icon.png' %}"/>
-                    <div class="info-slot">
-                        <a href="#" class="info-link">
-                            <span class="info-slot-title">Prieres de Saint Bernard en ces Temps Perturbes</span><br>
-                            <span class="info-slot-txt">Souvenez vous &ocirc; tr&egrave;s mis&eacute;ricordieuse Virege Marie, qu'on n'a jamais entendu dire (&hellip;)</span>
-                        </a>
+                {# Loops throug all entries #}
+                {% for note in aNoter %}
+                    <div class="info-slot-container">
+                        {% with 'stLeon/images/Anoter/'|add:note.img_src|add:'.png' as image_static %}
+                            <img class="info-img" src="{% static image_static %}" alt="">
+                        {% endwith %}
+                        <div class="info-slot">
+                            <a href="{{ note.link }}" class="info-link">
+                                <p class="info-slot-title">{{ note.titre|safe  }}</p>
+                                <p class="info-slot-txt">{{ note.text|safe }}</p>
+                            </a>
+                        </div>
                     </div>
-                </div>
-                <div class="info-slot-container">
-                    <img class="info-img" src="{% static 'stLeon/images/bible_icon.png' %}"/>
-                    <div class="info-slot">
-                        <a href="#" class="info-link">
-                            <span class="info-slot-title">Avec Theobule, les Enfants connecte &agrave; la parole de Dieu</span><br>
-                            <span class="info-slot-txt">J&eacute;sus aime nous parler du Royaume de son P&egrave;re et il nous invite &agrave; y entrer. Il nous dit comment (&hellip;)</span>
-                        </a>
-                    </div>
-                </div>
-                <div class="info-slot-container">
-                    <img class="info-img" src="{% static 'stLeon/images/podcast_icon.png' %}"/>
-                    <div class="info-slot">
-                        <a href="#" class="info-link">
-                            <span class="info-slot-title">Ecoutez la Conf&eacute;rence &laquo; Sainte Genevi&egrave;ve &raquo; faite à Saint-L&eacute;on</span><br>
-                            <span class="info-slot-txt">&laquo; <span class="underline">lien à la conf&eacute;rence</span> &raquo;</span>
-                        </a>
-                    </div>
-                </div>
-            </div><!-- END: info -->
-        </div><!-- END: horaires-ingo -->
+                {% endfor %}
+            </div><!-- END: A Noter -->
+        </div><!-- END: Horaires & A Noter -->
 
         <!-- ACCORDION: EVENTS -->
+{#  ADJUST for SMALL SCREEN  #}
         <div class="accordion-container">
-            <button class="accordion" id="accordion-first">Congrès mission à Paris 25-27 septembre 2020, c’est pou vous</button>
-            <div class="panel">
-                <p>Depuis 2015, Anuncio organise le Congrès Mission en partenariat avec d’autres oeuvres et mouvements missionnaires.<br>Le Congrès Mission rassemble de nombreuses branches de l’Église autour de la question toujours nouvelle : Comment proposer la foi dans la société actuelle ?</p>
+        {% for actu in actualite %}
+            <div class="accordion-element">
+                {# Add first and last id to correct element #}
+                <button class="accordion" {% if forloop.counter == 1 %} id="accordion-first" {% elif forloop.revcounter == 1 %} id="accordion-last" {% endif %}>
+                    {{ actu.titre|safe }}</button>
+                <div class="panel">
+                    <p class="panel-text">{{ actu.text|safe }}</p>
+                </div>
             </div>
 
-            <button class="accordion">DIMANCHE 27 SEPTEMBRE, VENTE DE PETITS POTS DE CREME AU CITRON</button>
-            <div class="panel">
-                <p>Crème au citron<br>Soeur Raphaël se tiendra à votre disposition ce dimanche de 10h à 12h30 et de 17h à 20h15 pour vous proposer ses petits pots de crème au citron.</p>
-            </div>
-
-            <button class="accordion" id="accordion-last">MERCREDI 30 SEPTEMBRE : Réfléchir sur ce que nous vivons</button>
-            <div class="panel">
-                <p>Le Père Schwab propose chaque mercredi pendant 4 semaines, à 20h30 salle Saint-Augustin, de relire ensemble les mois écoulés en s’appuyant sur la lettre de Mgr de Moulins-Beaufort « Le matin, sème ton grain » pour mieux se tourner vers l’avenir. Chaque mercredi s’appuiera sur un chapitre de la Lettre. La Lettre est disponible sur place pour ceux qui ne l’ont pas déjà achetée.</p>
-            </div>
-        </div><!--  END: accordion -->
+        {% endfor %}
+        </div>
+        <!--  END: accordion -->
 
         <!-- CALENDAR -->
         <div class="calendar-container center-all">
@@ -207,7 +186,7 @@
     <script type="text/javascript" src="{%  static 'stLeon/js/searchBox.js' %}"></script>
 
     <!-- ACCORDION -->
-    <script type="text/javascript" src="{%  static 'stLeon/js/accordion.js' %}"></script>
+    <script type="text/javascript" src="{%  static 'stLeon/js/accordion_responsive.js' %}"></script>
 
 </body>
 </html>
