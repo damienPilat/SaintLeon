@@ -1,144 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    {% load static %}
-    <meta charset="UTF-8">
-    <title>Title</title>
+{% extends 'stLeon/base.html' %}
+{% load static %}
 
-    <style>
-        div#batiments {
-            width: 80vw;
-            margin: auto; /* Center div */
-        }
-        /* MAIN Containres */
-        div.batiments-elements {
-            /* Layout */
-            width: 100%;
-            display: flex;
-            float: left;    /* default elements left (odd el) */
-        }
-        /* Align even elements to right */
-        div#batiments>div:nth-child(even) {
-            float: right;
+{% block head_css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'stLeon/batiments.css' %}">
+{% endblock head_css %}
 
-        }
-        /* Have img first on odd rows */
-        div.batiments-elements:nth-child(odd) {
-            flex-direction: row-reverse;
-        }
-
-        /* IMAGES */
-        img.bat-img {
-            /* Layout */
-            height: 45vh;
-            min-height: 340px;
-            max-height: 500px;
-            width: auto;
-            /* Crop */
-            -webkit-clip-path: polygon(0 0, 80% 0, 100% 100%, 20% 100%);
-        }
-        div.bat-img-container {
-            /* Layout */
-            position: relative;
-            height: 45vh;
-            min-height: 340px;
-            max-height: 500px;
-            width: auto;
-        }
-        div.bat-img-shadow {
-            position: absolute;
-            height: 105%;       /* Height of img + 2x(offset) */
-            width: 105%;        /*      -//-              */
-            top: -2.5%;         /* offset */
-            left: -2.5%;
-            z-index: -1;        /* Place behind img */
-            content: "";
-            /* Crop (same as img) */
-            -webkit-clip-path: polygon(0 0, 80% 0, 100% 100%, 20% 100%);
-        }
-        /* Shadow colors */
-        div#bat-shadow-1 {background: rgb(171, 212, 129);}
-        div#bat-shadow-2 {background: rgb(184, 199, 228);}
-        div#bat-shadow-3 {background: rgb(241, 204, 177);}
-        div#bat-shadow-4 {background: rgb(251, 230, 163);}
-
-        /* TEXT */
-        div.bat-text-container {
-            /* Layout */
-            width: 40vw;
-            height: 10vh;       /* Must set height */
-            min-height: 340px;  /* Avoids slant ending if too short */
-            font-size: 16px;
-
-            /* Style */
-            text-align: justify;
-        }
-        .bat-text-container>div {
-            width: 35vw;
-            height: 100%;       /* Set height to parent */
-            margin-top: 5vh;
-        }
-        /* Left-side slant*/
-        .bat-text-container::before,
-        .bat-text-container>div::before {
-            content: "";
-            height: 100%;
-            width: 15%;		/* width of slant (sets angle) */
-            float: left;
-            /* Angle (and color?) of slant */
-            shape-outside: linear-gradient(to top right, #fff 49%, transparent 50%);
-
-            padding-left: 15px;
-        }
-
-        /* Right-side slant */
-        .bat-text-container>div::before {
-            float: right;
-            shape-outside: linear-gradient(to bottom left, #fff 49%, transparent 50%);
-        }
-
-        /* Adjust position of text closer to image, clip background */
-        div.bat-right {
-            position: relative;
-            left: -80px;
-            padding: 15px 0;
-            -webkit-clip-path: polygon(0 0, 90% 0, 100% 100%, 10% 100%);
-        }
-        div.bat-left {
-            position: relative;
-            right: -135px;
-            padding: 15px 0;
-            -webkit-clip-path: polygon(0 0, 90% 0, 100% 100%, 10% 100%);
-        }
-        /* Background color for text */
-        div#bat-text-1 {background: rgb(171, 212, 129);}
-        div#bat-text-2 {background: rgb(184, 199, 228);}
-        div#bat-text-3 {background: rgb(241, 204, 177);}
-        div#bat-text-4 {background: rgb(251, 230, 163);}
-
-    </style>
-</head>
-<body>
-    <div id="batiments">
-    {% for bat in batiments %}
-        <div class="batiments-elements">
-            <div class="bat-text-container">
-                <div class="inner-container">
-                    <div id="bat-text-{{ forloop.counter }}" {% if forloop.counter|divisibleby:2 %}class="bat-left"{% else %}class="bat-right"{% endif %}>
-                        <span class="bat-titre">{{ bat.nom|safe }}</span>
-                        <p class="bat-text">{{ bat.text|safe }}</p>
-                    </div>
+{% block main %}
+<div id="batiments">
+{% for bat in batiments %}
+    <div class="batiments-elements">
+        <div class="bat-text-container">
+            <div class="inner-container">
+                <div id="bat-text-{{ forloop.counter }}" {% if forloop.counter|divisibleby:2 %}class="bat-left"{% else %}class="bat-right"{% endif %}>
+                    <span class="bat-titre">{{ bat.nom|safe }}</span>
+                    <p class="bat-text">{{ bat.text|safe }}</p>
                 </div>
             </div>
-            <div class="bat-img-container">
-            {% with 'stLeon/images/Batiments/'|add:bat.img_src as image_static %}
-                <img class="bat-img" src="{% static image_static %}" alt="">
-            {% endwith %}
-                    <div class="bat-img-shadow" id="bat-shadow-{{ forloop.counter }}"></div>
-                </img>
-            </div>
         </div>
-    {% endfor %}
+        <div class="bat-img-container">
+        {% with 'stLeon/images/Batiments/'|add:bat.img_src as image_static %}
+            <img class="bat-img" src="{% static image_static %}" alt="">
+        {% endwith %}
+                <div class="bat-img-shadow" id="bat-shadow-{{ forloop.counter }}"></div>
+            </img>
+        </div>
     </div>
-</body>
-</html>
+{% endfor %}
+</div><!-- END: batiments -->
+{% endblock main %}
