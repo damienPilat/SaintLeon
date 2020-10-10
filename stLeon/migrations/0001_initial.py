@@ -15,12 +15,8 @@ class Migration(migrations.Migration):
             name='Batiments',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('nom', models.CharField(max_length=500)),
-                ('sousol', models.CharField(max_length=500)),
-                ('entresol', models.CharField(max_length=500)),
-                ('premier_etage', models.CharField(max_length=500)),
-                ('troisieme_etage', models.CharField(max_length=500)),
-                ('quatrieme_etage', models.CharField(max_length=500)),
+                ('text', models.TextField(max_length=5000)),
+                ('img_src', models.CharField(max_length=500)),
             ],
         ),
     ]
