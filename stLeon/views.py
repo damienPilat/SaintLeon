@@ -15,6 +15,12 @@ def index(request):
     return render(request, 'stLeon/main.html', context)
 
 
+def batiments(request):
+    batiments = get_list_or_404(Batiments)
+    context = {'batiments': batiments}
+    return render(request, 'stLeon/batiments.html', context)
+
+
 def test(request):
     bienvenue = get_list_or_404(Bienvenue)
     aNoter = get_list_or_404(Anoter)
@@ -23,12 +29,6 @@ def test(request):
                'aNoter': aNoter,
                'horairesMesse': horairesMesse}
     return render(request, 'stLeon/test.html', context)
-
-
-def test_2(request):
-    batiments = get_list_or_404(Batiments)
-    context = {'batiments': batiments}
-    return render(request, 'stLeon/test_2.html', context)
 
 
 def getHorairesMesse():
