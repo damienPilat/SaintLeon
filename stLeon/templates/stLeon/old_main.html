@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en-gb">
+<head>
+    <title>{% block title %}Paroisse Saint-Leon{% endblock title %}</title>
+
+    {% load static %} {# Allow access to Static files #}
+    {% load stLeon_extras %}   {# Allow custom functions #}
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'stLeon/05_main.css' %}">
+
+    <!-- Logo Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+
+    {% block head_css %}
+        {#  Page-based CSS files #}
+    {% endblock head_css %}
+
+    {% block scriptFiles %}
+        {#  Page-based JS Files  #}
+    {% endblock scriptFiles %}
+
+</head>
+<body>
+
+    <!-- MAIN NAV -->
+    <nav class="main-navbar center-h" id="main-nav-bar">
+        <a href="la_paroisse" class="main-nav-item">La Paroisse</a>
+        <a href="info_pratique" class="main-nav-item">Info Pratique</a>
+        <a href="vie_spirituel" class="main-nav-item">Vie Spirituel</a>
+        <a href="groups" class="main-nav-item">Groups</a>
+        <a href="prier" class="main-nav-item">Prier</a>
+        <a href="#horaires-info-anchor" class="main-nav-item">Horaires</a>
+        <div class="search-box"></div>
+    </nav>
+
+    <!-- SIDE NAV -->
+    <div id="sideNav" class="side-nav">
+        <a href="javascript:void(0)" class="close-btn" onclick="closeNav()">&#215;</a>
+        <a href="la_paroisse" class="side-nav-item">La Paroisse</a>
+        <a href="info_pratique" class="side-nav-item">Info Pratique</a>
+        <a href="vie_spirituel" class="side-nav-item">Vie Spirituel</a>
+        <a href="groups" class="side-nav-item">Groups</a>
+        <a href="prier" class="side-nav-item">Prier</a>
+        <!-- <div class="search-box"></div> -->
+    </div>
+
+
+    <!-- MAIN PAGE CONTENTS -->
+    <div id="main">
+        <!-- SIDE NAV: Btn -->
+        <span id="side-menu-open" onclick="openNav()">&#9776;</span>
+
+        <div id="image-banner">
+            {% for img in bannerImg %}
+
+            {% endfor %}
+        </div>
+
+
+        <!-- IMAGE BANNER -->
+        <div class="image-wrapper">
+            <div class="image-wrapper-items"><img src="{% static 'stLeon/images/Banner/stLeon_interieur.jpeg' %}" alt="St Leon - Interieur" /></div>
+            <div class="image-wrapper-items"><img src="{% static 'stLeon/images/Banner/stLeon_exterieur_portrait_one.JPG' %}" alt="St Leon - Exterieur" /></div>
+            <div class="image-wrapper-items"><img src="{% static 'stLeon/images/Banner/stLeon_exteireur_portrait_two.jpeg' %}" alt="St Leon - Exterieur"/></div>
+        </div>
+
+
+        <!-- St LEON LOGO -->
+        <div id="logo">
+            <span id="logo-txt">Paroisse Saint-L&eacute;on<span id="logo-txt-two">Paris 15eme</span></span>
+            <hr id="logo-line"/>
+        </div>
+
+
+        <!--  BIENVENUE MESSAGE -->
+        <div id="bienvenue">
+            <div id="bienvenue-container">
+                <div id="bienvenue-titre">
+                    <span id="intro-msg">Bienvenue &agrave; <br> Saint-L&eacute;on<br><span id="intro-msg-two">Paris 15eme</span></span>
+                </div>
+
+                {% for bEl in bienvenue %}
+                    <div class="bienvenue-elements">
+                        <p class="bienvenue-text">{{ bEl.text|safe|linebreaks }}</p>
+                        {% with 'stLeon/images/Bienvenue/bienvenue_img'|addstr:forloop.counter|addstr:'.png' as image_static %}
+                            <img class="bienvenue-img" src="{% static image_static %}" alt="">
+                        {% endwith %}
+                    </div>
+                {%  endfor %}
+            </div>
+        </div><!-- END: BIENVENUE MESSAGE -->
+
+
+        <!-- LA PAROISSE: LIEN -->
+        <div id="laParoisse-container">
+            <div id="laParoisse-images">
+                <a href="#" class="p-link">
+                    <img class="p-link-img" src="{% static 'stLeon/images/Paroisse/batiments.png' %}" alt="Bâtiments Paroissiales Image/Lien">
+                    <span class="p-link-text">B&acirc;timents Paroissiales</span>
+                </a>
+                <a href="#" class="p-link">
+                    <img class="p-link-img" src="{% static 'stLeon/images/Paroisse/religieuse.png' %}" alt="Communautés Religiouse Image/Lien">
+                    <span class="p-link-text">Communaut&eacute;s Religieuse</span>
+                </a>
+                <a href="#" class="p-link">
+                    <img class="p-link-img" src="{% static 'stLeon/images/Paroisse/culturelle.png' %}" alt="Visite Culturelle Image/Lien">
+                    <span class="p-link-text">Visite Culturelle</span>
+                </a>
+            </div>
+        </div><!-- END: PAROISSE: LIEN -->
+
+
+        <!-- HORAIRES & A NOTER -->
+        <div id="horaires-info">
+            <a id="horaires-info-anchor" class="anchor"></a>
+            <!-- Horaires -->
+            <div id="horaires" class="center-all">
+                <img src="{% static horairesMesse %}">
+            </div><!-- END: Horaires -->
+
+            <!-- A Noter: -->
+            {# Three latest elements from Models.Anoter, w/ image, title, text & link #}
+            <div id="info">
+                {# Loops throug all entries #}
+                {% for note in aNoter %}
+                    <div class="info-slot-container">
+                        {% with 'stLeon/images/Anoter/'|add:note.img_src|add:'.png' as image_static %}
+                            <img class="info-img" src="{% static image_static %}" alt="">
+                        {% endwith %}
+                        <div class="info-slot">
+                            <a href="{{ note.link }}" class="info-link">
+                                <p class="info-slot-title">{{ note.titre|safe  }}</p>
+                                <p class="info-slot-txt">{{ note.text|safe }}</p>
+                            </a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div><!-- END: A Noter -->
+        </div><!-- END: HORAIRES & A NOTER -->
+
+
+        <!-- ACCORDION: EVENTS -->
+{#  ADJUST for SMALL SCREEN  #}
+        <div class="accordion-container">
+        {% for actu in actualite %}
+            <div class="accordion-element">
+                {# Add first and last id to correct element #}
+                <button class="accordion" {% if forloop.counter == 1 %} id="accordion-first" {% elif forloop.revcounter == 1 %} id="accordion-last" {% endif %}>
+                    {{ actu.titre|safe }}</button>
+                <div class="panel">
+                    <p class="panel-text">{{ actu.text|safe|linebreaks }}</p>
+                </div>
+            </div>
+
+        {% endfor %}
+        </div>
+        <!--  END: accordion -->
+
+
+        <!-- CALENDAR -->
+        <div class="calendar-container center-all">
+            <img src="{% static 'stLeon/images/calendar.png' %}" id="calendar-img" alt="Temporary image for calendar">
+            <div class="calendar center-all"></div>
+
+        </div><!-- END: Calander -->
+
+
+        <!-- EXTERIOR LINKS -->
+        <div class="exterior-links-container">
+            <div class="exterior-links-images">
+                <a href="#"><img class="e-link-img" src="{% static 'stLeon/images/stLeon_jeune_logo.png' %}" alt="Saint Leon Jeune Link">
+                </a>
+                <a href="#"><img class="e-link-img" src="{% static 'stLeon/images/charisme_two.png' %}" alt="Saint Leon Charisme Link"></a>
+                <a href="#"><img class="e-link-img" src="{% static 'stLeon/images/catho_diocese_logo.png' %}" alt="Diocese de Paris Link"></a>
+                <a href="#"><img class="e-link-img" src="{% static 'stLeon/images/aleteia_logo.png' %}" alt="Aleteia Link"></a>
+            </div>
+            <div class="exterior-links-text">
+                <a href="#" class="e-link-text">Jeunes de Saint-Léon</a>
+                <a href="#" class="e-link-text">Charismes de Saint-Léon</a>
+                <a href="#" class="e-link-text">Diocese de Paris</a>
+                <a href="#" class="e-link-text">Aleteia<br>La foi Catholique</a>
+            </div>
+        </div><!-- END: Exterior Links -->
+
+
+        <!-- SOCIAL LINKS -->
+        <div class="social-links">
+            <a href="#"></a><!-- Spacing -->
+            <a href=""><img class="s-link-img" src="{% static 'stLeon/images/sn_papeFrancois.png' %}" alt="Compte Twitter du Pape Francois"/></a>
+            <a href=""><img class="s-link-img" src="{% static 'stLeon/images/sn_paroisseSaintLeon.png' %}" alt="Compte Facebook de la Paroisse Saint Leon" /></a>
+            <a href=""><img class="s-link-img" src="{% static 'stLeon/images/sn_radioNotreDame.png' %}" alt="Page web Radio Notre Dame" /></a>
+            <a href="#"></a>
+        </div><!-- END: Social Links -->
+
+    </div><!-- END: main -->
+
+    <!-- FOOTER -->
+    <div id="footer">
+        <div id="footer-table">
+            <ul id="footer-links-list">
+                <li><a href="#" class="footer-link">Accesibilt&eacute;</a></li>
+                <li><a href="#" class="footer-link">Mentions Legales</a></li>
+                <li><a href="#" class="footer-link">Plan du Site</a></li>
+                <li><a href="#" class="footer-link">Espace Priv&eacute;</a></li>
+                <li><a href="#" class="footer-link">Fil RSS du Site</a></li>
+            </ul>
+        </div>
+        <p id="footer-text">Paroisse Saint-L&eacute;on &agrave; Paris - 2020</p>
+    </div><!-- END: Footer -->
+
+
+    {#  SCRIPTS  #}
+    <!-- SIDE NAV -->
+    <script type="text/javascript" src="{%  static 'stLeon/js/sideNav.js' %}"></script>
+
+    <!-- SEARCH BOX -->
+    <script>
+        var SEARCH_ICON_STATIC_URL = '{%  static "stLeon/images/search.svg" %}';
+    </script>
+    <script type="text/javascript" src="{%  static 'stLeon/js/searchBox.js' %}"></script>
+
+    <!-- ACCORDION -->
+    <script type="text/javascript" src="{%  static 'stLeon/js/accordion_responsive.js' %}"></script>
+
+</body>
+</html>
