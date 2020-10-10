@@ -1,5 +1,5 @@
 body {
-    background: white;
+    background: rgb(255, 255, 255);
 
     /* Align all content fully to edges of window*/
     margin: 0;
@@ -15,7 +15,6 @@ SEARCH BOX:
 		- Search Icon,
 	- Search text,
 **********/
-
 div.search-box {
     /* Dimension */
     width: 40px;
@@ -32,7 +31,6 @@ div.search-box {
     /* Animaton */
     transition: width 0.4s;
 }
-
 a.search-btn {
     /* Dimensions */
     width: 40px;
@@ -53,7 +51,6 @@ img#search-icon {
     /* Change svg color to bkg using tool: https://codepen.io/sosuke/pen/Pjoqqp*/
     filter: invert(30%) sepia(23%) saturate(5793%) hue-rotate(346deg) brightness(112%) contrast(85%)
 }
-
 input.search-txt {
     /* Initially make invisible */
     border: none;
@@ -96,17 +93,24 @@ MAIN MENU BAR
 nav.main-navbar {
     /* Layout */
     top: 5%;
-    padding: 10px;
+    padding: 30px;
     background: #EC4B33;
 }
-
 /* Nav items */
 a.main-nav-item {
+    height: 24px;
     /* Style */
     color: rgb(48, 54, 63);
     text-decoration: none;
     font-size: 20px;
-    padding: 10px 20px 10px 20px;
+    padding: 10px 30px;
+    border-radius: 20px;
+
+    transition: 0.4s;
+}
+a.main-nav-item:hover {
+    background-color: rgb(211,211,211);
+    font-size: 21px;
 }
 
 /*******
@@ -164,28 +168,29 @@ GRID: Images
 ************/
 .image-wrapper {
     /* Grid */
-    background: #EC4B33;
+    background: rgb(236,75,51);
     display: grid;
     grid-template-columns: 44% 22% 33%;
     grid-gap: 10px;
 
     /* Dimensions */
     height: 100%;
-    padding: 10px;
+    padding: 15px 10px 40px 10px;
 }
 
 .image-wrapper-items {
-    /* Dimensions */
-    height: 100px;
-    height: 300px;
-
     /* Horizontal Alignment */
     display: flex;
     justify-content: center;
-}
 
-.banner-img-size > div > img {
+}
+div.image-wrapper-items > img {
+    /* Dimensions */
     height: 300px;
+    /*  Shadow  */
+    -webkit-box-shadow: 2px 3px 9px 2px rgba(171,20,0,1);
+    -moz-box-shadow: 2px 3px 9px 2px rgba(171,20,0,1);
+    box-shadow: 2px 3px 9px 2px rgba(171,20,0,1);
 }
 
 /***
@@ -197,7 +202,7 @@ div#logo {
 span#logo-txt {
     /* Style */
     color: white;
-    font-size: 65px;
+    font-size: 75px;
     font-family: 'Montserrat', sans-serif;
 
     /* Layout */
@@ -211,7 +216,7 @@ span#logo-txt-two {
 
     /* Layout */
     position: relative;
-    top: -2px; 			/* Move txt up */
+    top: -1px; 			/* Move txt up */
 }
 
 /* Logo Line */
@@ -219,7 +224,7 @@ hr#logo-line {
     /* Dimensions */
     height: 30px;
     width: 100vw;
-    margin: -18px 0 0 0;  /* Remove space b/w elements */
+    margin: -20px 0 0 0;  /* Remove space b/w elements */
 
     /* Style */
     background: white;
@@ -232,14 +237,14 @@ BIENVENUE
 *********/
 div#bienvenue {
     /* Dimension */
-    padding: 25px 0;
+    padding-top: 25px;
 
     /* Style */
     background: rgb(242, 242, 242);
     background-clip: border-box;
 
     /* Center */
-    display: flex;
+    display: grid;
     justify-content: center;
 }
 div#bienvenue-container {
@@ -254,7 +259,7 @@ div#bienvenue-container {
     background: white;
     border-radius: 5px;
 
-    /* Shadow: https://www.cssmatic.com/box-shadow */
+    /* Shadow: cssmatic.com/box-shadow */
     -webkit-box-shadow: 0 0 13px 2px rgba(0,0,0,0.75);
     -moz-box-shadow: 0 0 13px 2px rgba(0,0,0,0.75);
     box-shadow: 0 0 13px 2px rgba(0,0,0,0.75);
@@ -293,25 +298,69 @@ img.bienvenue-img {
     padding: 30px;
 }
 
+/**********
+LA PAROISSE
+***********/
+div#laParoisse-container {
+    /* Style*/
+    background: rgb(242, 242, 242);
+    background-clip: border-box;
+
+    /* Layout */
+    padding: 100px 200px;
+}
+div#laParoisse-images {
+    /* Grid */
+    display: grid;
+    grid-template-columns: repeat(3, 33%);
+}
+
+a.p-link {
+    vertical-align: top;
+    display: inline-block;
+    text-align: center;
+
+    text-decoration: none;
+    color: black;
+}
+a.p-link:hover {
+    color: gray;
+}
+img.p-link-img {
+    height: 120px;
+    width: auto;
+    vertical-align: bottom;
+}
+span.p-link-text {
+    display: block;
+    padding-top: 5px;
+}
+
+
+
 /************
 Horaires Info
 *************/
 div#horaires-info {
     /* Dimensions */
     height: 400px;
+    padding: 25px 0;
 
     /* Style */
     background-color: rgb(254, 241, 231);
 
     /* Grid */
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 50% 50%;
     grid-template-rows: auto;
 }
 div#horaires {
-    margin: 10px;
+    /* Dimensions */
     width: 45vw;
-
+    margin: 10px;
+}
+div#horaires > img {
+    width: 90%;
 }
 div#info {
     /* Change to grid */
@@ -320,12 +369,13 @@ div#info {
 
     /* Style */
     margin: 10px;
-    /*width: 45vw;*/
+    width: 45vw;
 }
 div.info-slot-container {
     /* Layout */
     display: grid;
     grid-template-columns: 20% 80%;
+    padding: 10px;
 
     justify-content: center;
 }
@@ -493,12 +543,12 @@ div.exterior-links-container > div {
 div.exterior-links-images {
     margin-top: 5%;
 }
-img.link-img {
+img.e-link-img {
     max-width: 20vw;
     height: auto;
     max-height: 20vw;
 }
-a.link-text {
+a.e-link-text {
     text-decoration: none;
     color: black;
     padding-bottom: 10%;
@@ -598,17 +648,37 @@ HELPER CLASSES
     display: flex;
     justify-content: center;
 }
+/* Vertical Center */
+.center-h {
+    display: flex;
+    align-items: center;
+}
 
+/* Underline Text */
 .underline {
     text-decoration: underline;
 }
+
+/* Set color, decoration and style of link*/
 .link {
     color: rgb(0, 180, 216);
     text-decoration: none;
     font-style: italic;
 }
+/* Set color, decoration and style of link
+    -> Links open mail draft */
 .mail {
     color: rgb(251, 133, 0);
     text-decoration: none;
     font-style: italic;
+}
+
+/* Anchor offset */
+a.anchor {
+    display: block;
+    position: relative;
+    top: -25vh;
+    visibility: hidden;
+    height: 0;
+    width: 0;
 }
