@@ -1,17 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-gb">
 <head>
-    <meta charset="UTF-8">
-    <title>{% block title %}Paroisse Saint Leon{% endblock title %}</title>
-
+    <title>{% block title %}Paroisse Saint-Leon{% endblock title %}</title>
     {% load static %} {# Allow access to Static files #}
+    {% load stLeon_extras %}   {# Allow custom functions #}
 
-    {#  Bootstrap CSS  #}
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'stLeon/05_main.css' %}">
 
-    <!--  Custom CSS  -->
-    <link rel="stylesheet" type="text/css" href="{% static 'stLeon/main.css' %}">
-
+    <!-- Logo Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
 
     {% block head_css %}
         {#  Page-based CSS files #}
@@ -20,50 +18,57 @@
     {% block scriptFiles %}
         {#  Page-based JS Files  #}
     {% endblock scriptFiles %}
-
 </head>
-<body>
+    <div id="header">
+        <!-- MAIN NAV -->
+        <nav class="main-navbar center-h" id="main-nav-bar">
+            <a href="la_paroisse" class="main-nav-item">La Paroisse</a>
+            <a href="info_pratique" class="main-nav-item">Info Pratique</a>
+            <a href="vie_spirituel" class="main-nav-item">Vie Spirituel</a>
+            <a href="groups" class="main-nav-item">Groups</a>
+            <a href="prier" class="main-nav-item">Prier</a>
+            <a href="#horaires-info-anchor" class="main-nav-item">Horaires</a>
+            <div class="search-box"></div>
+        </nav>
 
-    <nav class="navbar navbar-expand-sm justify-content-center">
-        <ul class="nav nav-justified">
-            <li class="nav-item"><a class="navslink" href="#">Paroisse</a></li>
-            <li class="nav-item"><a class="navslink" href="#">Info Pratique</a></li>
-            <li class="nav-item"><a class="navslink" href="#">Vie Spirituel</a></li>
-            <li class="nav-item"><a class="navslink" href="#">Groupes</a></li>
-            <li class="nav-item"><a class="navslink" href="#">Prier</a></li>
-            <li class="nav-item"><a class="navslink" href="#">Horaires</a></li>
-        </ul>
-        <form class="form-inline my-3 my-lg-0">
-            <div class="search-box">
-                <input type="search" class="form-control search-txt" placeholder="Rechercher" aria-label="Search">
-                <a class="search-btn" href="#">
-                    <i class="fas fa-search"></i>
-                </a>
-            </div>
-        </form>
-    </nav>
-
-{#  Main Content  #}
-    <div class="container">
-        {#  Picture Header  #}
-        <div class="row">
-            <div class="col pictures">Picture 1</div>
-            <div class="col pictures">Picture 2</div>
-            <div class="col pictures">
-                <div class="row pictures">Picture 3a</div>
-                <div class="row pictures">Pictrue 3b</div>
-            </div>
+        <!-- SIDE NAV -->
+        <div id="sideNav" class="side-nav">
+            <a href="javascript:void(0)" class="close-btn" onclick="closeNav()">&#215;</a>
+            <a href="la_paroisse" class="side-nav-item">La Paroisse</a>
+            <a href="info_pratique" class="side-nav-item">Info Pratique</a>
+            <a href="vie_spirituel" class="side-nav-item">Vie Spirituel</a>
+            <a href="groups" class="side-nav-item">Groups</a>
+            <a href="prier" class="side-nav-item">Prier</a>
+            <!-- <div class="search-box"></div> -->
         </div>
+    </div><!-- END: Header -->
 
-{#  Paroisse  #}
-    </div>
+    {% block main %}
+    {% endblock main %}
 
+    <!-- FOOTER -->
+    <div id="footer">
+        <div id="footer-table">
+            <ul id="footer-links-list">
+                <li><a href="#" class="footer-link">Accesibilt&eacute;</a></li>
+                <li><a href="#" class="footer-link">Mentions Legales</a></li>
+                <li><a href="#" class="footer-link">Plan du Site</a></li>
+                <li><a href="#" class="footer-link">Espace Priv&eacute;</a></li>
+                <li><a href="#" class="footer-link">Fil RSS du Site</a></li>
+            </ul>
+        </div>
+        <p id="footer-text">Paroisse Saint-L&eacute;on &agrave; Paris - 2020</p>
+    </div><!-- END: Footer -->
 
+    <!-- SIDE NAV -->
+    <script type="text/javascript" src="{%  static 'stLeon/js/sideNav.js' %}"></script>
 
+    <!-- SEARCH BOX -->
+    <script>
+        var SEARCH_ICON_STATIC_URL = '{%  static "stLeon/images/search.svg" %}';
+    </script>
+    <script type="text/javascript" src="{%  static 'stLeon/js/searchBox.js' %}"></script>
 
-    {#  JQuery, Popper and Bootstrap JS  #}
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-</body>
+    {% block endscripts %}
+    {% endblock endscripts %}
 </html>
