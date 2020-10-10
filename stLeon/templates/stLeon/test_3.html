@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <title>Test 3</title>
+</head>
+<body>
+    <div id="batiments">
+        {% for bat in batiments %}
+        <div class="batiments-elements">
+            <div class="bat-text-container">
+                <div>
+                    <span class="bat-title">{{ bat.nom|safe }}</span>
+                    <p class="bat-text">{{ bat.text|safe }}</p>
+                </div>
+            </div>
+
+            <div class="bat-img-container">
+                {% with 'stLeon/images/Batiments/'|add:bat.img_src as image_static %}
+                <img class="bat-img" src="{% static image_static %}" alt="">
+                {% endwith %}
+                <div class="bat-img-shadow"></div>
+            </div>
+
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>

@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    {% load static %}
+
+    <style>
+
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        .link {
+            color: rgb(0, 180, 216);
+            text-decoration: none;
+            font-style: italic;
+        }
+
+        div#horaires-info-container {
+            display: flex;
+            justify-content: center;
+        }
+        div#horaires {
+
+        }
+        div#horaires > img {
+            /* Dimensions */
+            width: 45vw;
+            max-width: 540px;
+
+            padding: 15px;
+        }
+        div#info {
+
+        }
+        div.info-slot-container {
+            display: flex;
+        }
+        img.info-img {
+            /* Keep aspect ratio */
+            object-fit: contain;
+            width: 5vw;
+            max-width: 50px;
+            height: auto;
+            padding: 10px;
+        }
+        div.info-slot {
+            width: 80%;
+            max-height: 100px;
+            max-width: 510px;
+            padding-left: 10px;
+
+            {#border-left: 3px solid rgb(62, 69, 76);#}
+            margin: 15px 0;
+            {#overflow: hidden;#}
+
+            border: 1px solid black;
+        }
+        a.info-link {
+            text-decoration: none;
+            color: black;
+        }
+        p.info-slot-title {
+            font-size: 20px;
+            margin: 15px 0 5px 0;
+
+        }
+        p.info-slot-title:hover {
+            color: gray;
+        }
+        p.info-slot-txt {
+            margin: 0;
+            {#height: 55%;#}
+
+            white-space: nowrap;
+            {#overflow: hidden;#}
+            {#text-overflow: ellipsis;#}
+            {#-o-text-overflow: ellipsis;#}
+
+
+        }
+
+
+        /* GRID IMAGES */
+        .image-wrapper {
+            /* Grid */
+            background: rgb(236,75,51);
+            display: grid;
+            grid-template-columns: 44% 22% 33%;
+            grid-gap: 10px;
+
+            /* Dimensions */
+            height: 100%;
+            padding: 10px;
+        }
+
+        .image-wrapper-items {
+            /* Horizontal Alignment */
+            display: flex;
+            justify-content: center;
+
+        }
+        div.image-wrapper-items > img {
+            /* Dimensions */
+            height: 300px;
+            /*  Shadow  */
+            -webkit-box-shadow: 2px 3px 9px 2px rgba(171,20,0,1);
+            -moz-box-shadow: 2px 3px 9px 2px rgba(171,20,0,1);
+            box-shadow: 2px 3px 9px 2px rgba(171,20,0,1);
+        }
+
+
+        /* BIENVENUE MESSAGE */
+        div#bienvenue {
+            /* Dimension */
+            padding: 5vh auto;
+
+            /* Style */
+            background: rgb(242, 242, 242);
+            background-clip: border-box;
+
+            /* Center */
+            display: grid;
+            justify-content: center;
+        }
+        div#bienvenue-container {
+            /* Dimensions */
+            width: 75vw;
+            max-width: 650px;
+            min-width: 420px;
+            margin: 10px;
+            padding: 5px;
+
+            /* Style */
+            background: white;
+            border-radius: 5px;
+        }
+        div.bienvenue-elements {
+            display: flex;
+            padding-right: 20px;
+            padding-left: 0;
+        }
+        {# Reverse row direction on even #}
+        div.bienvenue-elements:nth-child(odd) {
+            flex-direction: row-reverse;
+            text-align: right;
+            padding-right: 0;
+            padding-left: 20px;
+        }
+
+        div#bienvenue-titre {
+            padding: 30px;
+        }
+        span#intro-msg {
+            font-size: 30px;
+        }
+        span#intro-msg-two {
+            font-size: 14px;
+            position: relative;
+            top: -10px;
+        }
+        p.bienvenue-text {
+            padding: 30px;
+            font-size: 16px;
+        }
+        img.bienvenue-img {
+            width: 110px;
+            height: auto;
+            padding: 30px;
+        }
+
+        div.laParoisse-images {
+            display: grid;
+            grid-template-columns: repeat(3, 33%);
+            /*justify-content: space-around;*/
+            /*align-content: center;*/
+
+            margin: auto 50px;
+        }
+        div.laParoisse-images > a {
+            place-self: center;
+        }
+        div.laParoisse-images > a > img {
+            height: 120px;
+            width: auto;
+            /*margin: 5%;*/
+        }
+        div.laParoisse-text {
+            display: grid;
+            grid-template-columns: repeat(3, 33%);
+            /*margin: auto 50px;*/
+        }
+        div.laParoisse-text > a {
+            place-self: center;
+        }
+    </style>
+</head>
+<body>
+
+<!-- HORAIRES & A NOTER -->
+<div id="horaires-info-container">
+    <!-- Horaires -->
+    <div id="horaires">
+        <img src="{% static horairesMesse %}">
+    </div><!-- END: Horaires -->
+
+    <!-- A Noter: -->
+    {# Three latest elements from Models.Anoter, w/ image, title, text & link #}
+    <div id="info">
+        {# Loops throug all entries #}
+        {% for note in aNoter %}
+            <div class="info-slot-container">
+                {% with 'stLeon/images/Anoter/'|add:note.img_src|add:'.png' as image_static %}
+                    <img class="info-img" src="{% static image_static %}" alt="">
+                {% endwith %}
+                <div class="info-slot">
+                    <a href="{{ note.link }}" class="info-link">
+                        <p class="info-slot-title">{{ note.titre|safe  }}</p>
+                        <p class="info-slot-txt">{{ note.text|safe|linebreaks }}</p>
+                    </a>
+                </div>
+            </div>
+        {% endfor %}
+    </div><!-- END: A Noter -->
+</div><!-- END: HORAIRES & A NOTER -->
+
+<div id="image-banner">
+    {% for img in bannerImg %}
+        {% with 'stLeon/images/Banner/'|add:note.img_src as image_static %}
+            <img class="banner-img" src="{% static image_static %}" alt="">
+        {% endwith %}
+    {% endfor %}
+</div>
+
+<div class="image-wrapper">
+    <div id="photo_one" class="image-wrapper-items">
+        <img src="{% static 'stLeon/images/Banner/stLeon_interieur.jpeg' %}" alt="St Leon - Interieur" />
+    </div>
+    <div id="photo_two" class="image-wrapper-items"><img src="{% static 'stLeon/images/Banner/stLeon_exterieur_portrait_one.JPG' %}" /></div>
+    <div id="photo_three" class="image-wrapper-items"><img src="{% static 'stLeon/images/Banner/stLeon_exteireur_portrait_two.jpeg' %}" /></div>
+</div>
+
+
+
+<div id="bienvenue">
+{%  load stLeon_extras %}
+    <div id="bienvenue-container">
+        <div id="bienvenue-titre">
+            <span id="intro-msg">Bienvenue &agrave; <br> Saint-L&eacute;on<br><span id="intro-msg-two">Paris 15eme</span></span>
+        </div>
+
+        {% for bEl in bienvenue %}
+        <div class="bienvenue-elements">
+            <p class="bienvenue-text">{{ bEl.text|safe }}</p>
+            {% with 'stLeon/images/Bienvenue/bienvenue_img'|addstr:forloop.counter|addstr:'.png' as image_static %}
+                <img class="bienvenue-img" src="{% static image_static %}" alt="">
+            {% endwith %}
+        </div>
+        {%  endfor %}
+    </div>
+
+    <!--  LA PAROISSE: LIEN -->
+    <div id="laParoisse-container">
+        <div class="laParoisse-images">
+            <a href="#"><img class="link-img" src="{% static 'stLeon/images/Paroisse/batiments.png' %}" alt="Saint Leon Jeune Link">
+            </a>
+            <a href="#"><img class="link-img" src="{% static 'stLeon/images/Paroisse/religieuse.png' %}" alt="Saint Leon Charisme Link"></a>
+            <a href="#"><img class="link-img" src="{% static 'stLeon/images/Paroisse/culturelle.png' %}" alt="Diocese de Paris Link"></a>
+        </div>
+        <div class="laParoisse-text">
+            <a href="#" class="link-text">Bâtiments Paroissiales</a>
+            <a href="#" class="link-text">Communautés Religieuse</a>
+            <a href="#" class="link-text">Visite Culturelle</a>
+        </div>
+    </div>
+</div><!-- END: bienvenue -->
+
+</body>
+</html>
