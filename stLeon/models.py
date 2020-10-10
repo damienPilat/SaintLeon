@@ -1,10 +1,11 @@
 from django.db import models
+from django.core.validators import RegexValidator
 
 
 # List des Actualités
 class Actualite(models.Model):
     titre = models.CharField(max_length=500)
-    text = models.TextField(max_length=5000)
+    text = models.TextField(max_length=5000)        # RECOGNISE LINE BREAK
     date = models.DateTimeField('date ajouter')
     link = models.CharField(max_length=2048)
     first_element = models.BooleanField(default=False)
@@ -34,12 +35,9 @@ class Bienvenue(models.Model):
 
 # List des Batiments à Saint-Léon
 class Batiments(models.Model):
-    nom = models.CharField(max_length=500)
-    sousol = models.CharField(max_length=500)
-    entresol = models.CharField(max_length=500)
-    premier_etage = models.CharField(max_length=500)
-    troisieme_etage = models.CharField(max_length=500)
-    quatrieme_etage = models.CharField(max_length=500)
+    nom = models.CharField(max_length=500, default='')
+    text = models.TextField(max_length=5000)
+    img_src = models.CharField(max_length=500)
 
-    def str__str__(self):
+    def __str__(self):
         return self.nom
