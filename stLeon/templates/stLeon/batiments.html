@@ -6,25 +6,50 @@
 {% endblock head_css %}
 
 {% block main %}
-<div id="batiments">
-{% for bat in batiments %}
-    <div class="batiments-elements">
-        <div class="bat-text-container">
-            <div class="inner-container">
-                <div id="bat-text-{{ forloop.counter }}" {% if forloop.counter|divisibleby:2 %}class="bat-left"{% else %}class="bat-right"{% endif %}>
-                    <span class="bat-titre">{{ bat.nom|safe }}</span>
-                    <p class="bat-text">{{ bat.text|safe }}</p>
+    <div id="bat-header"><h2>Les Batiments de la Paroisse Saint-Léon</h2></div>
+    <div id="batiments">
+    {% for bat in batiments %}
+        <div class="batiments-elements">
+            <div class="bat-text-container">
+                <div class="inner-container">
+                    <div id="bat-text-{{ forloop.counter }}" {% if forloop.counter|divisibleby:2 %}class="bat-left"{% else %}class="bat-right"{% endif %}>
+                        <span class="bat-titre">{{ bat.nom|safe }}</span>
+                        <p class="bat-text">{{ bat.text|safe }}</p>
+                    </div>
                 </div>
             </div>
+            <div class="bat-img-container">
+            {% with 'stLeon/images/Batiments/'|add:bat.img_src as image_static %}
+                <img class="bat-img" src="{% static image_static %}" alt="">
+            {% endwith %}
+                    <div class="bat-img-shadow" id="bat-shadow-{{ forloop.counter }}"></div>
+                </img>
+            </div>
         </div>
-        <div class="bat-img-container">
-        {% with 'stLeon/images/Batiments/'|add:bat.img_src as image_static %}
-            <img class="bat-img" src="{% static image_static %}" alt="">
-        {% endwith %}
-                <div class="bat-img-shadow" id="bat-shadow-{{ forloop.counter }}"></div>
-            </img>
-        </div>
-    </div>
-{% endfor %}
-</div><!-- END: batiments -->
+    {% endfor %}
+    </div><!-- END: batiments -->
+
+
+    <hr id="rel-line">
+    <div id="rel-header">
+        <h2>Les Communautes Religieuse de la Paroisse Saint-Léon</h2></div>
+    <div id="religieuse">
+        {% for rel in religieuse %}
+            <div class="rel-container">
+                {% with 'stLeon/images/Religieuse/'|add:rel.img_src as image_static %}
+                    <img class="rel-img" src="{% static image_static %}" alt="Image of Religieuse Community">
+                {% endwith %}
+                <div class="rel-text-container">
+                    <p class="rel-title">{{ rel.nom }}</p>
+                    <p class="rel-address">{{ rel.address}}</p>
+                    <p class="rel-desc">{{ rel.desc|safe }}</p>
+                    <a href="{{ rel.site }}" class="rel-link">
+                        Leur site web
+                        <img class="rel-link-img" src="{% static 'stLeon/images/Religieuse/web_icon.png' %}" alt="Link Icon"> </a>
+                </div>
+            </div>
+        {% endfor %}
+
+    </div><!-- END: religieus -->
+
 {% endblock main %}

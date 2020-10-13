@@ -1,7 +1,11 @@
 /* CONTAINERS */
+body {background: rgb(252, 185, 178)}
 div#batiments {
     width: 80vw;
+    height: 1500px;
     margin: auto; /* Center div */
+
+    padding-top: 50px;
 }
 /* MAIN Containres */
 div.batiments-elements {
@@ -18,6 +22,12 @@ div#batiments>div:nth-child(even) {
 /* Have img first on odd rows */
 div.batiments-elements:nth-child(odd) {
     flex-direction: row-reverse;
+}
+
+/* Header */
+div#bat-header {
+    margin: auto;
+    width: 50%;
 }
 
 /* IMAGES */
@@ -108,3 +118,64 @@ div#bat-text-1 {background: rgb(171, 212, 129);}
 div#bat-text-2 {background: rgb(184, 199, 228);}
 div#bat-text-3 {background: rgb(241, 204, 177);}
 div#bat-text-4 {background: rgb(251, 230, 163);}
+
+
+/**********
+ RELIGIEUSE
+***********/
+/* Container */
+div#religieuse {
+    display: flex;
+    justify-content: center;
+}
+div.rel-container {
+    margin: 20px;
+}
+/* Header */
+div#rel-header {
+    margin: auto;
+    width: 50%;
+}
+hr#rel-line {
+    width: 100vw;
+    color: white;
+    border-top: 15px solid white;
+}
+/* Image */
+img.rel-img {
+    width: 200px;
+    height: auto;
+    border-radius: 20px;
+}
+
+/* TEXT */
+div.rel-text-container {
+    /* Style */
+    background: white;
+    border-radius: 20px;
+
+    /* Layout */
+    position: relative;
+    top: -45px;
+    padding: 10px;
+    width: 180px;
+}
+p.rel-title {
+    margin: 0;
+    font-size: 20px;
+}
+p.rel-address {
+    color: #777777;
+    font-size: 14px;
+    margin: 0;
+}
+a.rel-link {
+    color: rgb(182, 113, 59);
+    text-decoration: none;
+}
+img.rel-link-img {
+    float: right;
+    height: 25px;
+    padding-right: 50px;
+    margin-bottom: 15px;
+}
