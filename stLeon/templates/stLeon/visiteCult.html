@@ -1,0 +1,102 @@
+{% extends 'stLeon/base.html' %}
+{% load static %}
+
+{% block title %}Visite Culturelle - Paroisse Saint Leon{% endblock title %}
+{% block head_css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'stLeon/visite.css' %}">
+{% endblock head_css %}
+{% block scriptFiles %}
+    <script type="text/javascript" src="{%  static 'stLeon/js/visite-slideshow.js' %}"></script>
+{% endblock scriptFiles %}
+
+{% block main %}
+<div id="visite-container">
+
+    <div class="visite-elements">
+        <!-- Title Page -->
+        <div class="slides-v">
+            <div id="visite-titlePage">
+                <div id="titlePage-header" class="center-v">
+                    <p id="titlePage-header-text">Visite Culturelle de L’Église Saint-Léon<br>
+                        <span id="titlePage-header-dates">1924 - 1945</span></p>
+                </div>
+
+                <!-- SHAPES : Le commencement -->
+                <div class="shape-container">
+                    <div class="shapes" id="shape-1"></div>
+                    <div class="shapes" id="shape-2"></div>
+                    <img class="shapes" id="img-1" src="stLeon_interieur.png">
+                    <div class="shapes" id="shape-3"></div>
+                    <img class="shapes" id="img-2" src="pape_cropped.png">
+                    <img class="shapes" id="img-3" src="stLeon_facade.png">
+                    <div class="shapes" id="shape-4"></div>
+                    <div class="shapes" id="shape-5"></div>
+                </div>
+            </div><!-- END: title Page -->
+        </div><!-- END: slide-v:TitlePage -->
+
+        <!-- Commencement Page -->
+        <div class="slides-v">
+            <div id="leCommencement">
+                <div class="slide-header">
+                    <p class="slide-header-text">Le Commencement</p>
+                    <div class="slide-text">
+                        <p>Depuis le dernier quart du XIXe, des fidèles habitant au sud du Champ de Mars,
+                            ballottés entre <a href="https://www.stpierredugroscaillou.com/" class="visite-txt-link">Saint-Pierre du Gros Caillou</a>
+                            et <a href="https://www.sjbg.org/" class="visite-txt-link">Saint Jean-Baptiste de Grenelle</a>,
+                            souhaitaient avoir pour eux une église paroissiale en propre.
+                        </p>
+                        <p>Avec la <a href="https://www.legifrance.gouv.fr/loda/id/JORFTEXT000000508749/2020-10-10/" class="visite-txt-link">Loi de Séparation de 1905</a>,
+                            l’État ne finance plus la construction ni l’entretien de nouvelles églises, mais les autorités religieuses sont en revanche plus libres dans leurs choix.
+                        </p>
+                        <p>En 1909, elles décident d’ériger une église votive à Jeanne d’Arc (béatifiée la même année) ; une riche famille pieuse offre un terrain, occupé
+                            auparavant par le Palais du Travail de l’Exposition universelle de 1900, édifice éphémère démoli en 1906. </p>
+                    </div>
+
+                </div>
+
+                <div class="slide-content">
+                    <div class="slide-visials">
+                        <div class="slide-shape"></div>
+                        <img src="loi_de_separation.png" class="slide-img" alt="Loi de Separation de L'Eglise et L'Etat">
+                        <figcaption class="slide-img-caption">La Loi de Séparation des Églises et de l’État.</figcaption>
+                    </div>
+                </div>
+            </div><!-- END: Commencement Page -->
+        </div><!-- END: silde-v:Comencement -->
+    </div><!-- END: visite elements -->
+
+    <!-- VISITE NAV BAR -->
+    <div id="visite-nav">
+        <button class="visite-nav-link" onclick="currentSlide(1)">Le Commencement</button>
+        <button class="visite-nav-link" onclick="currentSlide(2)">Pape L&eacute;on 1er</button>
+        <button class="visite-nav-link" onclick="currentSlide(3)">L'Architect</button>
+        <button class="visite-nav-link" onclick="currentSlide(4)">L'Inspiration</button>
+
+        <div class="dropdown">
+            <button class="drop-btn">La D&eacute;coration
+                <i class="fa fa-caret-up"></i>
+            </button>
+            <div class="dropdown-content">
+                <a class="visite-nav-link-dp" href="#">L'Art-D&eacute;co</a>
+                <a class="visite-nav-link-dp" href="#">Les Dimmensions</a>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <button class="drop-btn">Les D&eacute;tails
+                <i class="fa fa-caret-up"></i>
+            </button>
+            <div class="dropdown-content">
+                <a class="visite-nav-link-dp" href="#">La Brique</a>
+                <a class="visite-nav-link-dp" href="#">Les  Mosa&iuml;ques</a>
+                <a class="visite-nav-link-dp" href="#">Les Ferronneries</a>
+                <a class="visite-nav-link-dp" href="#">Les Vitraux</a>
+                <a class="visite-nav-link-dp" href="#">Les Sculptures</a>
+                <a class="visite-nav-link-dp" href="#">L'Orgue, Le Mobilier</a>
+            </div>
+        </div>
+    </div><!-- END: visite nav bar -->
+
+</div><!-- END: visite container -->
+{% endblock main %}

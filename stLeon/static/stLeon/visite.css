@@ -1,0 +1,259 @@
+body {
+	padding: 0;
+	margin: 0;
+}
+/* CONTAINERS */
+div#visite-container {
+	/* Layout */
+	height: 100vh;
+	position: relative; /* For slideshow */
+	/* Style */
+	font-family: "Big Calson", serif;
+}
+
+div.visite-elements {
+	/* Display */
+	display: flex;
+	justify-content: center;
+	margin: 5vh;
+
+	/* Style */
+	overflow: hidden;
+}
+
+/*********
+TITLE PAGE
+**********/
+div#visite-titlePage {
+	/* Grid */
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+}
+div#titlePage-header {
+	margin: 0 50px;
+}
+p#titlePage-header-text {
+	font-size: 40px;
+}
+span#titlePage-header-dates {
+	font-size: 22px;
+	position: relative;
+	top: -15px;
+}
+
+/**********
+  SHAPES:
+Title Page:
+**********/
+div.shape-container {
+	/* From parent grid */
+	justify-self: end;
+	/* Layout */
+	position: relative;
+	width: 450px;
+	height: 340px;
+	top: -25px;
+	float: right;
+
+	/* Grid */
+	display: grid;
+	grid: 3 / repeat(4, 25%);	/* Row / column */
+	gap: 0;
+	place-items: center center;
+}
+/* Individual Shapes */
+.shapes {
+	position: relative;
+	float: right;
+	height: 120px;
+	width: 105px;
+	clip-path: polygon(0 22%, 50% 0, 100% 22%, 100% 78%, 50% 100%, 0 78%);
+}
+/* Top Row */
+div#shape-1 {background: rgb(176, 129, 167);}
+div#shape-2 {background: rgb(238, 194, 74);}
+img#img-1 {background: rgb(216, 103, 152);}
+div#shape-3 {background: rgb(251, 230, 172);}
+/* Middle Row */
+img#img-2 {
+	background: rgb(255, 255, 255);
+	grid-column-start: 2;
+}
+img#img-3 {background: rgb(176, 129, 167);}
+div#shape-4 {background: rgb(238, 194, 74);}
+#img-2, #img-3, #shape-4 {
+	right: -57px;
+	top: -20px;
+}
+/* Bottom Row */
+div#shape-5 {
+	background: rgb(216, 103, 152);
+	grid-column-start: 4;
+	grid-row-start: 3;
+	top: -40px;
+}
+
+
+/********
+ NAV BAR: w3schools
+*********/
+div#visite-nav {
+	/* Layout */
+	display: flex;
+	justify-content: center;
+	overflow: hidden;
+  	/* Style */
+  	background: rgb(255,255,255);
+}
+/* Main Links */
+button.visite-nav-link {
+	/* Layout*/
+	float: left;
+	padding: 14px 16px;
+	/* Style */
+	font-size: 16px;
+	color: rgb(171,171,171);
+	text-align: center;
+	border: none;
+	outline: none;
+	background: inherit;
+}
+/* Dropdown container*/
+div.dropdown {
+	float: left;
+	overflow: hidden;
+}
+/* Dropdown elements*/
+div.dropdown button.drop-btn {
+	/* Layout */
+	margin: 0;
+	padding: 14px 16px;
+	/* Style */
+	font-size: 16px;  
+	border: none;
+	outline: none;
+	color: rgb(171,171,171);
+	background-color: inherit;
+	font-family: inherit;
+}
+/* Hover behaviour */
+button.visite-nav-link:hover, div.dropdown:hover button.drop-btn {
+	color: rgb(0,0,0);
+}
+/* Dropdown Container */
+div.dropdown-content {
+	/* Layout */
+	display: none;
+	position: absolute;
+	bottom: 24vh;     /* drop UP !Not RESPONSIVE!*/
+	min-width: 160px;
+	z-index: 1;
+	/* Style*/
+	background-color: rgb(255,255,255);
+	-webkit-box-shadow: 0px -2px 5px 1px rgba(220,220,220,1);
+	-moz-box-shadow: 0px -2px 5px 1px rgba(220,220,220,1);
+	box-shadow: 0px -2px 5px 1px rgba(220,220,220,1);
+}
+
+a.visite-nav-link-dp {
+  float: none;
+  color: rgb(171,171,171);
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+a.visite-nav-link-dp:hover {
+  color: rgb(0,0,0);
+}
+
+div.dropdown:hover div.dropdown-content {
+  display: block;
+}
+
+.visite-nav-active {
+	border-top: 3px solid rgb(223,130,69) !important; /* otherwise border:none; in btn takes piority */
+}
+
+/********
+SLIDESHOW
+*********/
+/* Slide Container */
+.slides-v {
+	display: none;
+	/* Display effect*/
+	opacity: 0;
+	height: 0;
+	overflow: hidden;
+}
+/* IF active */
+.visite-active {
+	display: block;
+	opacity: 1;
+	height: auto;
+}
+/* Slide children */
+.slides-v>div {
+	/* Layout */
+	width: 75vw;
+	min-width: 500px;
+	max-width: 1000px;
+	height: 50vw;
+	min-height: 300px;
+	max-height: 500px;
+	/* Style */
+	background: rgb(246, 248, 250);
+}
+
+/* Normal Slides */
+/* Le Commencement */
+/* Header */
+div#leCommencement {
+	display: grid;
+	grid-template-columns: 4fr 1fr;
+}
+p.slide-header-text {
+	margin: 0;
+	padding: 35px 35px 0;
+	font-size: 40px;
+	font-family: "Big Calson", serif;
+}
+div.slide-text {
+	padding: 20px 20px 20px 50px;
+	text-indent: 2em;
+	font-size: 18px;
+}
+div.slide-shape {
+	/* Layout */
+	height: 70px;
+	width: 105px;
+	margin: auto; /* Center */
+	/* Style */
+	background: rgb(176, 129, 167);
+	clip-path: polygon(0 0, 100% 0, 100% 65%, 50% 100%, 0 65%);
+}
+img.slide-img {
+	height: 200px;
+	width: auto;
+	display: block;
+	margin: 20% auto auto;
+}
+figcaption.slide-img-caption {
+	font-style: italic;
+	color: rgb(167,167,167);
+	text-align: center;
+}
+a.visite-txt-link {
+	color: rgb(0, 180, 216);
+	text-decoration: none;
+	font-style: italic;
+}
+
+/*****
+HELPER
+******/
+.center-v {
+	display: flex;
+	align-items: center;
+}

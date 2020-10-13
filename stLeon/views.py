@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_list_or_404
-from .models import Actualite, Anoter, Bienvenue, Batiments
+from .models import Actualite, Anoter, Bienvenue, Batiments, Religieuse
 
 
 def index(request):
@@ -17,8 +17,14 @@ def index(request):
 
 def batiments(request):
     batiments = get_list_or_404(Batiments)
-    context = {'batiments': batiments}
+    religieuse = get_list_or_404(Religieuse)
+    context = {'batiments': batiments,
+               'religieuse': religieuse}
     return render(request, 'stLeon/batiments.html', context)
+
+
+def visite_cult(request):
+    return render(request, 'stLeon/visiteCult.html')
 
 
 def test(request):
@@ -29,6 +35,12 @@ def test(request):
                'aNoter': aNoter,
                'horairesMesse': horairesMesse}
     return render(request, 'stLeon/test.html', context)
+
+
+def test_3(request):
+    religieuse = get_list_or_404(Religieuse)
+    context = {'religieuse': religieuse}
+    return render(request, 'stLeon/test_3.html', context)
 
 
 def getHorairesMesse():
