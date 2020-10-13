@@ -4,27 +4,76 @@
     {% load static %}
     <meta charset="UTF-8">
     <title>Test 3</title>
+    <style>
+        body {
+            background: lightgray;
+            width: 200px;
+        }
+        /* Container */
+        div#religieuse {
+            display: flex;
+        }
+        div.rel-container {
+            margin: 20px;
+        }
+
+        /* Image */
+        img.rel-img {
+            max-width: 200px;
+            height: auto;
+            border-radius: 20px;
+        }
+
+        /* TEXT */
+        div.rel-text-container {
+            /* Style */
+            background: white;
+            border-radius: 20px;
+
+            /* Layout */
+            position: relative;
+            top: -45px;
+            padding: 10px;
+        }
+        p.rel-title {
+            margin: 0;
+            font-size: 20px;
+        }
+        p.rel-address {
+            color: #777777;
+            font-size: 14px;
+            margin: 0;
+        }
+        a.rel-link {
+            color: rgb(182, 113, 59);
+            text-decoration: none;
+        }
+        img.rel-link-img {
+            float: right;
+            height: 25px;
+            padding-right: 50px;
+            margin-bottom: 15px;
+        }
+    </style>
 </head>
 <body>
-    <div id="batiments">
-        {% for bat in batiments %}
-        <div class="batiments-elements">
-            <div class="bat-text-container">
-                <div>
-                    <span class="bat-title">{{ bat.nom|safe }}</span>
-                    <p class="bat-text">{{ bat.text|safe }}</p>
-                </div>
+    <div id="religieuse">
+        {% for rel in religieuse %}
+        <div class="rel-container">
+            {% with 'stLeon/images/Religieuse/'|add:rel.img_src as image_static %}
+                <img class="rel-img" src="{% static image_static %}" alt="Image of Religieuse Community">
+            {% endwith %}
+            <div class="rel-text-container">
+                <p class="rel-title">{{ rel.nom }}</p>
+                <p class="rel-address">{{ rel.address}}</p>
+                <p class="rel-desc">{{ rel.desc|safe }}</p>
+                <a href="{{ rel.site }}" class="rel-link">
+                    Leur site web
+                    <img class="rel-link-img" src="{% static 'stLeon/images/Religieuse/web_icon.png' %}" alt="Link Icon"> </a>
             </div>
-
-            <div class="bat-img-container">
-                {% with 'stLeon/images/Batiments/'|add:bat.img_src as image_static %}
-                <img class="bat-img" src="{% static image_static %}" alt="">
-                {% endwith %}
-                <div class="bat-img-shadow"></div>
-            </div>
-
         </div>
         {% endfor %}
-    </div>
+
+    </div><!-- END: religieus -->
 </body>
 </html>
