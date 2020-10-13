@@ -6,7 +6,7 @@
     {% load stLeon_extras %}   {# Allow custom functions #}
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" type="text/css" href="{% static 'stLeon/05_main.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'stLeon/main.css' %}">
 
     <!-- Logo Font -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
@@ -22,7 +22,7 @@
     <div id="header">
         <!-- MAIN NAV -->
         <nav class="main-navbar center-h" id="main-nav-bar">
-            <a href="la_paroisse" class="main-nav-item">La Paroisse</a>
+            <a href="{% url 'stLeon:index' %}" class="main-nav-item">La Paroisse</a>
             <a href="info_pratique" class="main-nav-item">Info Pratique</a>
             <a href="vie_spirituel" class="main-nav-item">Vie Spirituel</a>
             <a href="groups" class="main-nav-item">Groups</a>
