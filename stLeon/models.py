@@ -41,3 +41,15 @@ class Batiments(models.Model):
 
     def __str__(self):
         return self.nom
+
+
+# List des Communautes Religieuse
+class Religieuse(models.Model):
+    nom = models.CharField(max_length=500)
+    address = models.CharField(max_length=500)
+    desc = models.TextField(max_length=5000)
+    img_src = models.CharField(max_length=500)
+    site = models.CharField(max_length=500)
+
+    def __str__(self):
+        return self.nom
