@@ -1,6 +1,9 @@
 {% extends 'stLeon/base.html' %}
 {% load static %} {# Allow access to Static files #}
 {% load stLeon_extras %}   {# Allow custom functions #}
+{% block scriptFiles %}
+<script type="text/javascript" src="{% static 'stLeon/js/main-events-accordion.js' %}"></script>
+{% endblock scriptFiles %}
 
 <!-- MAIN PAGE CONTENTS -->
 {% block main %}
@@ -56,11 +59,11 @@
                 <img class="p-link-img" src="{% static 'stLeon/images/Paroisse/batiments.png' %}" alt="Bâtiments Paroissiales Image/Lien">
                 <span class="p-link-text">B&acirc;timents Paroissiales</span>
             </a>
-            <a href="#" class="p-link">
+            <a href="{% url 'stLeon:batiments'%}#religieuse" class="p-link">
                 <img class="p-link-img" src="{% static 'stLeon/images/Paroisse/religieuse.png' %}" alt="Communautés Religiouse Image/Lien">
                 <span class="p-link-text">Communaut&eacute;s Religieuse</span>
             </a>
-            <a href="#" class="p-link">
+            <a href="{% url 'stLeon:visite' %}" class="p-link">
                 <img class="p-link-img" src="{% static 'stLeon/images/Paroisse/culturelle.png' %}" alt="Visite Culturelle Image/Lien">
                 <span class="p-link-text">Visite Culturelle</span>
             </a>
