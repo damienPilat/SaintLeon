@@ -1,5 +1,5 @@
 // SLIDESHOW for Visite Culturelle
-var slideIndex = 2;
+var slideIndex = 1;
 showSlides(slideIndex);
 
 function currentSlide(n) {
@@ -24,5 +24,5 @@ function showSlides(n) {
     slides[slideIndex-1].className += " visite-active";
 
     // Add active to nav element
-    navs[slideIndex-1].className += " visite-nav-active";
+    navs[slideIndex-2].className += " visite-nav-active";
 }
