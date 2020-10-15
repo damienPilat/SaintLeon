@@ -53,3 +53,15 @@ class Religieuse(models.Model):
 
     def __str__(self):
         return self.nom
+
+
+# Slides de Visite Culturelle
+class VisiteCulturelle(models.Model):
+    header = models.CharField(max_length=500)
+    text = models.TextField(max_length=5000)
+    img_src = models.CharField(max_length=500)
+    img_alt = models.CharField(max_length=500)
+    img_cap = models.CharField(max_length=500)
+
+    def __str__(self):
+        return self.header
