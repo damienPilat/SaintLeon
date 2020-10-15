@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_list_or_404
-from .models import Actualite, Anoter, Bienvenue, Batiments, Religieuse
+from .models import Actualite, Anoter, Bienvenue, Batiments, Religieuse, VisiteCulturelle
 
 
 def index(request):
@@ -24,7 +24,9 @@ def batiments(request):
 
 
 def visite_cult(request):
-    return render(request, 'stLeon/visiteCult.html')
+    visiteCult = get_list_or_404(VisiteCulturelle)
+    context = {'visiteCult': visiteCult}
+    return render(request, 'stLeon/visiteCult_v2.html', context)
 
 
 def test(request):
