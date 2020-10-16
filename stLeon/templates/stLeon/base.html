@@ -64,13 +64,13 @@
     <script type="text/javascript" src="{%  static 'stLeon/js/sideNav.js' %}"></script>
 
     <!-- SEARCH BOX -->
-    <script>
-        var SEARCH_ICON_STATIC_URL = '{%  static "stLeon/images/search.svg" %}';
-    </script>
+    <script>var SEARCH_ICON_STATIC_URL = '{%  static "stLeon/images/search.svg" %}'; //Define img url </script>
     <script type="text/javascript" src="{%  static 'stLeon/js/searchBox.js' %}"></script>
 
     <!--  Helper JS Scripts -->
     <script type="text/javascript" src="{% static 'stLeon/js/helper_functions.js' %}"></script>
+
+    {#  Page based scripts  #}
     {% block endscripts %}
     {% endblock endscripts %}
 </html>
