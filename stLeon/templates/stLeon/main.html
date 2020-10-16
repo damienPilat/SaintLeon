@@ -1,9 +1,6 @@
 {% extends 'stLeon/base.html' %}
 {% load static %} {# Allow access to Static files #}
 {% load stLeon_extras %}   {# Allow custom functions #}
-{% block scriptFiles %}
-<script type="text/javascript" src="{% static 'stLeon/js/main-events-accordion.js' %}"></script>
-{% endblock scriptFiles %}
 
 <!-- MAIN PAGE CONTENTS -->
 {% block main %}
@@ -76,7 +73,7 @@
         <a id="horaires-info-anchor" class="anchor"></a>
         <!-- Horaires -->
         <div id="horaires" class="center-all">
-            <img src="{% static horairesMesse %}">
+            <img id="horaires-img" src="{% static horairesMesse %}" alt="Horaires de Messe Hors Vacances">
         </div><!-- END: Horaires -->
 
         <!-- A Noter: -->
@@ -86,7 +83,9 @@
             {% for note in aNoter %}
                 <div class="info-slot-container">
                     {% with 'stLeon/images/Anoter/'|add:note.img_src|add:'.png' as image_static %}
-                        <img class="info-img" src="{% static image_static %}" alt="">
+                        <a class="info-img-link" href="{{ note.link }}">
+                            <img class="info-img" src="{% static image_static %}" alt="">
+                        </a>
                     {% endwith %}
                     <div class="info-slot">
                         <a href="{{ note.link }}" class="info-link">
@@ -121,8 +120,8 @@
     <!-- CALENDAR -->
     <div class="calendar-container center-all">
         <img src="{% static 'stLeon/images/calendar.png' %}" id="calendar-img" alt="Temporary image for calendar">
+        {# Currently hidden #}
         <div class="calendar center-all"></div>
-
     </div><!-- END: Calander -->
 
 
@@ -155,3 +154,6 @@
 
 </div><!-- END: main -->
 {% endblock main %}
+{% block endscripts %}
+<script type="text/javascript" src="{% static 'stLeon/js/main-events-accordion.js' %}"></script>
+{% endblock endscripts %}
